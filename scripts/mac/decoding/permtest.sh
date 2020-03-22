@@ -2,7 +2,7 @@
 
 source /Users/Maryam/anaconda3/etc/profile.d/conda.sh
 conda activate DeepLearningEEG
-cd ../../decoding/
+cd ../../../decoding/
 
 python permtest.py \
 --SAVE_EPOCH_ROOT ../data/preprocessed/epochs/ \

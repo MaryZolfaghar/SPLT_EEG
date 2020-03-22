@@ -7,7 +7,7 @@
 source  /pl/active/ccnlab/users/zolfaghar/EEGexp
 conda activate EEGexp
 
-cd ../../decoding/
+cd ../../../decoding/
 
 python permtest.py \
 --SAVE_EPOCH_ROOT ../data/preprocessed/epochs/ \
