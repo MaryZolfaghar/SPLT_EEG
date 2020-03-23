@@ -35,4 +35,4 @@ for gpu in $gpus
 do
 echo "Setting fan for " $gpu "back to auto"
 nvidia_fancontrol auto $gpu
-done 
+done

@@ -9,4 +9,4 @@ python permtest.py \
 --SAVE_RESULT_ROOT ../results/decoding/permtest/ \
 --cond_filter none \
 --cond_block later \
---cond_time prestim \ 
+--cond_time prestim 

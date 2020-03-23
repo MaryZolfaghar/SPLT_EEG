@@ -31,20 +31,20 @@ parser.add_argument('--cond_time', choices=['prestim','poststim'],
 
 
 """
-Set parameter 
+Set parameter
 """
 def set_params(cond_block, cond_time, SAVE_EPOCH_ROOT):
-    pass	
+    pass
 def main_read_gen_stat():
     pass
 
 ####=========
-def main(args):   
+def main(args):
     path=args.SAVE_RESULT_ROOT+ 'results_filter_400%s' %(args.cond_time)+ '/' + '%s' %(args.cond_filter) + '/'
-    
+
 if __name__ == '__main__':
     args=parser.parse_args()
-    print(args)
+    print(args.cond_filter)
     print('--------------------------')
     main(args)
 #[epochs_smpl, n_chan, n_times]=set_params(cond_block, cond_time, SAVE_EPOCH_ROOT)
