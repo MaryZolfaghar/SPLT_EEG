@@ -8,7 +8,6 @@ Created on Sun Mar 22 16:19:47 2020
 import argparse
 import mne
 
-print('1')
 parser = argparse.ArgumentParser()
 
 # Set Path
@@ -17,7 +16,6 @@ parser.add_argument("--SAVE_EPOCH_ROOT", default='../data/preprocessed/epochs/',
 
 parser.add_argument("--SAVE_RESULT_ROOT", default='../results/permtest/',
                     help='Filename for saving the results')
-print('1')
 
 # Conditions
 parser.add_argument('--cond_filter', choices=['none','non_symm'],
@@ -32,35 +30,22 @@ parser.add_argument('--cond_time', choices=['prestim','poststim'],
 
 
 
-print('1')
-
 """
 Set parameter 
 """
 def set_params(cond_block, cond_time, SAVE_EPOCH_ROOT):
-
-   pass
-
+    pass	
 def main_read_gen_stat():
     pass
 
-print('1')
 ####=========
 def main(args):   
-    print(args)
-    print('7')
     path=args.SAVE_RESULT_ROOT+ 'results_filter_400%s' %(args.cond_time)+ '/' + '%s' %(args.cond_filter) + '/'
-    print(path)
     
 if __name__ == '__main__':
-    print('5')
-    print(parser)
-    print(parser.parse_args())
-    print(parser.parse_known_args())
     args=parser.parse_args()
-    print(type(args[0]))
-    print('6')
     print(args)
+    print('--------------------------')
     main(args)
 #[epochs_smpl, n_chan, n_times]=set_params(cond_block, cond_time, SAVE_EPOCH_ROOT)
 #extent_time=epochs_smpl.times[[0, -1, 0, -1]]
