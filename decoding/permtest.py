@@ -36,7 +36,8 @@ parser.add_argument('--cond_block', choices=['early','later'],
 parser.add_argument('--cond_time', choices=['prestim','poststim'],
                     default='prestim',
                     help='Period of analysis related to the onset(stim presentation)')
-parser.add_argument('--cond_decoding', choices=['none','removeevoked','resampled'],
+parser.add_argument('--cond_decoding',
+                    choices=['none','removeevoked','resampled'],
                     default='none',
                     help='Period of analysis related to the onset(stim presentation)')
 
@@ -44,8 +45,8 @@ parser.add_argument('--cond_decoding', choices=['none','removeevoked','resampled
 # EEG
 parser.add_argument('--subj_num', type=int, default=1,
                     help='subject number')
-parser.add_argument('--applyBaseline_bool', action='store_true', 
-                    default='True', help='apply baseline')
+parser.add_argument('--applyBaseline_bool', action='store_true',
+                    help='apply baseline')
 parser.add_argument('--pre_tmin', type=float, default=-0.4,
                     help='tmin crop for prestim period')
 parser.add_argument('--pre_tmax', type=float, default=-0.05,
@@ -65,52 +66,23 @@ parser.add_argument('--normalization_type', choices=['normal','lstmPaper'],
 # Permutation
 parser.add_argument('--gen_rand_perm', action='store_true',
                     help='generate random permutation for each subject')
-parser.add_argument('--null_max_iter', type=int, default=10,
+parser.add_argument('--null_max_iter', type=int, default=2,
                     help='max num of iterations in generating null distribution')
 
 # Decoder
+parser.add_argument('--gen_decoder_scores', action='store_true',
+                    help='generate decoder scores for each subject')
 parser.add_argument('--n_splits', type=int, default=3,
                     help='How many folds to use for cross-validation')
 parser.add_argument('--random_state', type=int, default=0,
                     help='random state in LinearSVC')
-parser.add_argument('--max_iter', type=int, default=1000,
+parser.add_argument('--max_iter', type=int, default=10000,
                     help='maximum num of iterations in LinearSVC')
 parser.add_argument('--n_jobs', type=int, default=1,
                     help='Number of jobs to use for running the decoder')
 parser.add_argument("--scoring",
                     default='roc_auc',
                     help='The scoring method using in decoder')
-
-
-
-
-# """
-# Set parameter
-# """
-# def set_params(args):
-#     epchs = mne.read_epochs(args.SAVE_EPOCH_ROOT +
-#     'epochs_sec_applyBaseline_subj1-afterRejICA-epo.fif',
-#     proj=True, preload=True, verbose=None)
-#     ##==========================================================================
-#     epchs = epchs.pick_types(eeg=True)
-#     set_param = epchs['pred']['non'].copy()
-#     ##==========================================================================
-#     if args.cond_block=='early': #block 3-6
-#         set_param = set_param['Block<7'].copy()
-#         set_param = set_param['Block>2'].copy()
-#     elif args.cond_block=='later':#block 7-10
-#         set_param = set_param['Block<11'].copy()
-#         set_param = set_param['Block>6'].copy()
-#     ##==========================================================================
-#     if args.cond_time=='prestim':
-#         set_param= set_param.crop(tmin=args.pre_tmin, tmax=args.pre_tmax)
-#     elif args.cond_time=='poststim':
-#         set_param= set_param.crop(tmin=args.post_tmin, tmax=args.post_tmax)
-#     ##==========================================================================
-#     n_chan  = set_param._data.shape[1]
-#     n_times = set_param._data.shape[2]
-#     ##========================================================================
-#     return set_param, n_chan, n_times
 """
 Apply a non-symmetric filter
 """
@@ -223,13 +195,16 @@ Generate random data to create a null distribution
 def generate_rand(args, X, Y):
     null_scores=[]
     true_Y=Y.copy();
+    print(args.null_max_iter)
     for nitr in range(args.null_max_iter):
+        print('rand iteration #%d' %nitr)
         # Y=true_Y.copy()
         cv = StratifiedKFold(n_splits=args.n_splits, shuffle=True)
         le = LabelEncoder()
-        clf_SVC = make_pipeline(StandardScaler(),
-                                LinearModel(LinearSVC(args.random_state,
-                                                      args.max_iter)))
+        clf_SVC = make_pipeline(
+                          StandardScaler(),
+                          LinearModel(LinearSVC(random_state=args.random_state,
+                                                max_iter=args.max_iter)))
         indx=np.random.permutation(true_Y.shape[0]);
         shuffled_Y = true_Y.copy()[indx];
         shuffled_Y = le.fit_transform(shuffled_Y.copy());
@@ -244,35 +219,60 @@ def generate_rand(args, X, Y):
 """
 Apply decoder and generting null distribution as well
 """
-def apply_decoder(args, Grp_data, fn_str):
+def apply_decoder(args, Grp_data):
+    print('1')
     cv = StratifiedKFold(n_splits=args.n_splits, shuffle=True)
     le = LabelEncoder()
-    clf_SVC  = make_pipeline(StandardScaler(),
-                             LinearModel(LinearSVC(args.random_state,
-                                                   args.max_iter)))
+    clf_SVC  = make_pipeline(
+                          StandardScaler(),
+                          LinearModel(LinearSVC(random_state=args.random_state,
+                                                max_iter=args.max_iter)))
+    str_clf='SVC'
     X = Grp_data.copy()._data
     y = le.fit_transform(Grp_data.copy().metadata.Trgt_Loc_main)
     if args.gen_rand_perm:
-        str_clf='clf_SVC'
-        null_scores = generate_rand(args.null_max_iter, X, y)
-        np.save(args.SAVE_RESULT_ROOT +'/null_scores_Grp1_ptrn1_%s_subj_%s.npy'
-                %(str_clf, args.subj_num), null_scores, allow_pickle=True);
-    else:
-        time_decod_clf = SlidingEstimator(clf_SVC, n_jobs=1, scoring='roc_auc')
+        null_scores = generate_rand(args, X, y)
+        np.save(args.SAVE_RESULT_ROOT +
+                '/null_scores_Grp1_ptrn1_%s_%s_%s_subj_%s.npy'
+                %(args.cond_block, args.cond_decoding, str_clf, args.subj_num),
+                null_scores, allow_pickle=True);
+        res_scores = null_scores     
+        print('-------done null decoding------')
+    if args.gen_decoder_scores:
+        time_decod_clf = SlidingEstimator(clf_SVC, n_jobs=args.n_jobs, 
+                                          scoring=args.scoring)
         scores_clf = mne.decoding.cross_val_multiscore(time_decod_clf, X, y,
                                                        cv=cv, n_jobs=args.n_jobs)
         scores_clf = np.mean(scores_clf, axis=0)# Mean scores across cv splits
-        np.save(fn_str, scores_clf, allow_pickle=True);
-    return scores_clf
+        np.save(args.SAVE_RESULT_ROOT +
+                '/scores_Grp1_ptrn1_%s_%s_%s_subj_%s.npy'
+                %(args.cond_block, args.cond_decoding, str_clf, args.subj_num),
+                scores_clf, allow_pickle=True);
+        res_scores = scores_clf
+        print('-------done decoding------')
+    return res_scores
 """
 main function
 """
 def main(args):
     [Grp1, Grp2, Grp3, Grp4, main_ptrn]=read_prep_epochs(args)
+    scores_G1 = apply_decoder(args, Grp1)
+#    scores_G2 = apply_decoder(args, Grp2)
+#    scores_G3 = apply_decoder(args, Grp3)
+#    scores_G4 = apply_decoder(args, Grp4)
 
 
+"""
+==============================================================================
+Main
+==============================================================================
+"""
 if __name__ == '__main__':
     args=parser.parse_args()
+    print('-------baseline')
+    print(args.applyBaseline_bool)
+    print('------gen rand')
+    print(args.gen_rand_perm)
     print(args)
     print('--------------------------')
     main(args)
