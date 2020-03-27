@@ -12,3 +12,5 @@ python permtest.py \
 --applyBaseline_bool \
 --gen_rand_perm \
 --gen_decoder_scores \
+--null_max_iter 10000 \
+--loop_null_iter 5

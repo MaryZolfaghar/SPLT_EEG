@@ -12,7 +12,7 @@ from sklearn.model_selection import StratifiedKFold#, cross_val_score
 from sklearn.preprocessing import StandardScaler, LabelEncoder
 from sklearn.pipeline import make_pipeline
 from sklearn.svm import LinearSVC
-from mne.decoding import LinearModel, SlidingEstimator
+from mne.decoding import LinearModel, SlidingEstimator, GeneralizingEstimator
 
 
 parser = argparse.ArgumentParser()
@@ -53,7 +53,7 @@ parser.add_argument('--pre_tmax', type=float, default=-0.05,
                     help='tmax crop for prestim period')
 parser.add_argument('--post_tmin', type=float, default=0.05,
                     help='tmin crop for poststim period')
-parser.add_argument('--post_tmax', type=float, default=-0.45,
+parser.add_argument('--post_tmax', type=float, default=0.45,
                     help='tmax crop for poststim period')
 
 
@@ -66,15 +66,19 @@ parser.add_argument('--normalization_type', choices=['normal','lstmPaper'],
 # Permutation
 parser.add_argument('--gen_rand_perm', action='store_true',
                     help='generate random permutation for each subject')
-parser.add_argument('--null_max_iter', type=int, default=2,
+parser.add_argument('--null_max_iter', type=int, default=10000,
                     help='max num of iterations in generating null distribution')
+parser.add_argument('--loop_null_iter', type=int, default=5,
+                    help='max num of iterations in outer loop to go through sim')
+
+
 
 # Decoder
 parser.add_argument('--gen_decoder_scores', action='store_true',
                     help='generate decoder scores for each subject')
 parser.add_argument('--n_splits', type=int, default=3,
                     help='How many folds to use for cross-validation')
-parser.add_argument('--random_state', type=int, default=0,
+parser.add_argument('--random_state', type=int, default=42,
                     help='random state in LinearSVC')
 parser.add_argument('--max_iter', type=int, default=10000,
                     help='maximum num of iterations in LinearSVC')
@@ -196,7 +200,7 @@ def generate_rand(args, X, Y):
     null_scores=[]
     true_Y=Y.copy();
     print(args.null_max_iter)
-    for nitr in range(args.null_max_iter):
+    for nitr in range(args.loop_null_iter):
         print('rand iteration #%d' %nitr)
         # Y=true_Y.copy()
         cv = StratifiedKFold(n_splits=args.n_splits, shuffle=True)
@@ -204,7 +208,7 @@ def generate_rand(args, X, Y):
         clf_SVC = make_pipeline(
                           StandardScaler(),
                           LinearModel(LinearSVC(random_state=args.random_state,
-                                                max_iter=args.max_iter)))
+                                                max_iter=args.null_max_iter)))
         indx=np.random.permutation(true_Y.shape[0]);
         shuffled_Y = true_Y.copy()[indx];
         shuffled_Y = le.fit_transform(shuffled_Y.copy());
@@ -236,10 +240,10 @@ def apply_decoder(args, Grp_data):
                 '/null_scores_Grp1_ptrn1_%s_%s_%s_subj_%s.npy'
                 %(args.cond_block, args.cond_decoding, str_clf, args.subj_num),
                 null_scores, allow_pickle=True);
-        res_scores = null_scores     
+        res_scores = null_scores
         print('-------done null decoding------')
     if args.gen_decoder_scores:
-        time_decod_clf = SlidingEstimator(clf_SVC, n_jobs=args.n_jobs, 
+        time_decod_clf = SlidingEstimator(clf_SVC, n_jobs=args.n_jobs,
                                           scoring=args.scoring)
         scores_clf = mne.decoding.cross_val_multiscore(time_decod_clf, X, y,
                                                        cv=cv, n_jobs=args.n_jobs)
@@ -251,11 +255,48 @@ def apply_decoder(args, Grp_data):
         res_scores = scores_clf
         print('-------done decoding------')
     return res_scores
+
+
+"""
+Temporal Generalization
+"""
+def apply_tempGen(args, Grp_data):
+    cv = StratifiedKFold(n_splits=args.n_splits, shuffle=True)
+    le = LabelEncoder()
+    clf_SVC  = make_pipeline(
+                          StandardScaler(),
+                          LinearModel(LinearSVC(random_state=args.random_state,
+                                                max_iter=args.max_iter)))
+    X=Grp_data.copy()._data
+    y=le.fit_transform(Grp_data.copy().metadata.Trgt_Loc_main)
+
+    time_gen = GeneralizingEstimator(clf_SVC, scoring=args.scoring,
+                                     n_jobs=args.n_jobs, verbose=True)
+    print(np.unique(y))
+    print(np.unique(Grp_data.copy().metadata.Trgt_Loc_main))
+
+    scores_wcv = cross_val_multiscore(time_gen, X, y, cv=cv, n_jobs=args.n_jobs)
+    scores = np.mean(scores_wcv, axis=0) #scores with cv
+    scores_diag = np.diag(scores)
+    scores_substract = scores_diag - 0.5
+    scores_wcv = (scores.copy(), scores_diag.copy(), scores_substract.copy())
+
+    # Without using cv, train and test on the same data
+    X = Grp_data.copy()._data
+    y = le.fit_transform(Grp_data.copy().metadata.Trgt_Loc_main)
+    time_gen.fit(X=X ,y=y)
+    scores = time_gen.score(X=X, y=y) #scores without cv
+    scores_diag = np.diag(scores)
+    scores_wocv = (scores.copy(), scores_diag.copy())
+
+    return scores_wcv, scores_wocv
+
 """
 main function
 """
 def main(args):
     [Grp1, Grp2, Grp3, Grp4, main_ptrn]=read_prep_epochs(args)
+    scores_wcv, scores_wocv = apply_tempGen(args, Grp1)
     scores_G1 = apply_decoder(args, Grp1)
 #    scores_G2 = apply_decoder(args, Grp2)
 #    scores_G3 = apply_decoder(args, Grp3)
