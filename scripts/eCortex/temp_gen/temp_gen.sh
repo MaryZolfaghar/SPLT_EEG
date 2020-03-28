@@ -40,7 +40,7 @@ echo "Process $dcd_fn starts"
 
 python temp_gen.py \
 --SAVE_EPOCH_ROOT ../data/version5.2/preprocessed/epochs/aft_ICA_rej/ \
---SAVE_RESULT_ROOT ../results/temp_gen/ \
+--SAVE_RESULT_ROOT ../results/temp_gen/eCortex/ \
 --subj_num $sbj_num \
 --cond_filter none \
 --cond_block later \
