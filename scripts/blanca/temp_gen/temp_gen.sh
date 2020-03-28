@@ -4,8 +4,19 @@
 #SBATCH -c 16
 #SBATCH --qos=blanca-ccn
 
+export HOME=`getent passwd $USER | cut -d':' -f6`
+export PYTHONUNBUFFERED=1
+echo Running on $HOSTNAME
+
 source /pl/active/ccnlab/conda/etc/profile.d/conda.sh
 conda activate /pl/active/ccnlab/users/zolfaghar/EEGexp
+
+gpus=$(echo $CUDA_VISIBLE_DEVICES | tr "," "\n")
+for gpu in $gpus
+do
+echo "Setting fan for" $gpu "to full"
+nvidia_fancontrol full $gpu
+done
 
 #cd ../../../tempGen/
 
@@ -31,23 +42,30 @@ echo $i
 sbj_num=$i
 
 dcd_fn="avgP1_scores_timeGen_earlyBlock_noneFilter_Subj_$sbj_num.npy"
-full_dcd_fn=../../results/tempGen/
+#full_dcd_fn=../../results/tempGen/
 #=============================================================================#
 
-if [ ! -f $full_dcd_fn ]
-then
-    echo "Process $dcd_fn starts"
+#if [ ! -f $full_dcd_fn ]
+#then
+echo "Process $dcd_fn starts"
 
-    python temp_gen.py \
-    --SAVE_EPOCH_ROOT ../../../../../../data/SPLT5.2/epochs/ \
-    --SAVE_RESULT_ROOT ../results/temp_gen/ \
-    --subj_num $sbj_num \
-    --applyBaseline_bool \
-    --cond_filter none \
-    --cond_block later \
-    --cond_time prestim
-else
-     echo "File $dcd_fn already exists."
-fi
+python temp_gen.py \
+--SAVE_EPOCH_ROOT ../../../../../../data/SPLT5.2/epochs/ \
+--SAVE_RESULT_ROOT ../results/temp_gen/ \
+--subj_num $sbj_num \
+--applyBaseline_bool \
+--cond_filter none \
+--cond_block later \
+--cond_time prestim
+#else
+#     echo "File $dcd_fn already exists."
+#fi
 done
-wait
+
+for gpu in $gpus
+do
+echo "Setting fan for " $gpu "back to auto"
+nvidia_fancontrol auto $gpu
+done
+
+#wait
