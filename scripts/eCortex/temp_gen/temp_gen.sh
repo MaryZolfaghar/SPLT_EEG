@@ -21,12 +21,12 @@ echo "Setting fan for" $gpu "to full"
 nvidia_fancontrol full $gpu
 done
 
-cd ../../../decoding/
+#cd ../../../tempGen/
 
 
 python temp_gen.py \
---SAVE_EPOCH_ROOT ../../data/preprocessed/epochs/ \
---SAVE_RESULT_ROOT ../../results/decoding/permtest/ \
+--SAVE_EPOCH_ROOT ../data/version5.2/preprocessed/epochs/aft_ICA_rej/ \
+--SAVE_RESULT_ROOT ../results/temp_gen/ \
 --cond_filter none \
 --cond_block later \
 --cond_time prestim

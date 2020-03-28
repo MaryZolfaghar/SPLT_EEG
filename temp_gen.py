@@ -20,11 +20,11 @@ parser = argparse.ArgumentParser()
 
 # Set Path
 parser.add_argument("--SAVE_EPOCH_ROOT",
-                    default='../../data/preprocessed/epochs/aft_ICA_rej/',
+                    default='../data/preprocessed/epochs/aft_ICA_rej/',
                     help='Filename for saved preprocessed epochs')
 
 parser.add_argument("--SAVE_RESULT_ROOT",
-                    default='../../results/tempGen/',
+                    default='../results/tempGen/',
                     help='Filename for saving the results')
 
 # Conditions
@@ -94,10 +94,13 @@ main function
 """
 def main(args):
     [Grp1, Grp2, Grp3, Grp4, main_ptrn] = read_prep_epochs(args)
-    sc_pck_G1, sc_pck_fit_G1 = apply_tempGen(args, Grp1, cv)
-    sc_pck_G2, sc_pck_fit_G2 = apply_tempGen(args, Grp2, cv)
-    sc_pck_G3, sc_pck_fit_G3 = apply_tempGen(args, Grp3, cv)
-    sc_pck_G4, sc_pck_fit_G4 = apply_tempGen(args, Grp4, cv)
+    
+    cv = StratifiedShuffleSplit(n_splits=args.n_splits, random_state=args.random_state)                                                    
+    
+    sc_pck_G1, sc_pck_fit_G1 = apply_temp_gen(args, Grp1, cv)
+    sc_pck_G2, sc_pck_fit_G2 = apply_temp_gen(args, Grp2, cv)
+    sc_pck_G3, sc_pck_fit_G3 = apply_temp_gen(args, Grp3, cv)
+    sc_pck_G4, sc_pck_fit_G4 = apply_temp_gen(args, Grp4, cv)
 
     # unpack them
     sc_G1, sc_diag_G1 = sc_pck_G1
