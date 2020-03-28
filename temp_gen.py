@@ -5,6 +5,12 @@ Created on Sat Mar 28 09:08:45 2020
 
 @author: Maryam
 """
+import sys
+
+print(sys.path)
+sys.path.insert(0, '../SPLT_EEG')
+print(sys.path)
+print('------------------------')
 
 import numpy as np
 import argparse
