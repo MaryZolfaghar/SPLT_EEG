@@ -7,7 +7,7 @@
 source /pl/active/ccnlab/conda/etc/profile.d/conda.sh
 conda activate /pl/active/ccnlab/users/zolfaghar/EEGexp
 
-cd ../../../tempGen/
+#cd ../../../tempGen/
 
 #=============================================================================#
 
@@ -41,6 +41,7 @@ then
     python temp_gen.py \
     --SAVE_EPOCH_ROOT ../../../../../../data/SPLT5.2/epochs/ \
     --SAVE_RESULT_ROOT ../results/tempGen/ \
+    --subj_num $sbj_num \
     --applyBaseline_bool \
     --cond_filter none \
     --cond_block later \
