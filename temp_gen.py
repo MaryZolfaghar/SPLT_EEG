@@ -24,7 +24,7 @@ parser.add_argument("--SAVE_EPOCH_ROOT",
                     help='Filename for saved preprocessed epochs')
 
 parser.add_argument("--SAVE_RESULT_ROOT",
-                    default='../results/tempGen/',
+                    default='../results/temp_gen/',
                     help='Filename for saving the results')
 
 # Conditions
@@ -94,9 +94,9 @@ main function
 """
 def main(args):
     [Grp1, Grp2, Grp3, Grp4, main_ptrn] = read_prep_epochs(args)
-    
-    cv = StratifiedShuffleSplit(n_splits=args.n_splits, random_state=args.random_state)                                                    
-    
+
+    cv = StratifiedShuffleSplit(n_splits=args.n_splits, random_state=args.random_state)
+
     sc_pck_G1, sc_pck_fit_G1 = apply_temp_gen(args, Grp1, cv)
     sc_pck_G2, sc_pck_fit_G2 = apply_temp_gen(args, Grp2, cv)
     sc_pck_G3, sc_pck_fit_G3 = apply_temp_gen(args, Grp3, cv)
@@ -152,7 +152,7 @@ def main(args):
 
     # ------ Pack all scores and save them
     sc_subj_pck = [avg_sc, avg_diag_sc, avg_sc_fit, avg_diag_sc_fir]
-    np.save(SAVE_RESULT_ROOT + 'avgP%s_diag_' %(main_ptrn) + \
+    np.save(args.SAVE_RESULT_ROOT + 'avgP%s_diag_' %(main_ptrn) + \
             fn_str_sbj + '.npy', sc_subj_pck, allow_pickle=True, fix_imports=1)
 """
 ==============================================================================
