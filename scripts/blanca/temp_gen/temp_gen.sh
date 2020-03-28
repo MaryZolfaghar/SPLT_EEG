@@ -4,8 +4,9 @@
 #SBATCH -c 16
 #SBATCH --qos=blanca-ccn
 
-export HOME=`getent passwd $USER | cut -d':' -f6`
-export PYTHONUNBUFFERED=1
+#export HOME=`getent passwd $USER | cut -d':' -f6`
+#echo $HOME
+#export PYTHONUNBUFFERED=1
 echo Running on $HOSTNAME
 
 source /pl/active/ccnlab/conda/etc/profile.d/conda.sh
@@ -28,7 +29,7 @@ selected_subj=( 1 2 3 4 5 7 8 9 10 12 15 16 17 18 19 20 21 22 23 24 25 26 27 28\
 
 
 #selected_subj=( 1 2 3 4 5 7 8 9 10 12 15 16 17 18 19 20 21 )
-
+selected_subj=(62 63 64 65 66 67 68 69 70 71 72 73 74)
 #selected_subj=(1)
 
 start time
@@ -50,13 +51,13 @@ dcd_fn="avgP1_scores_timeGen_earlyBlock_noneFilter_Subj_$sbj_num.npy"
 echo "Process $dcd_fn starts"
 
 python temp_gen.py \
---SAVE_EPOCH_ROOT ../../../../../../data/SPLT5.2/epochs/ \
+--SAVE_EPOCH_ROOT ../../../data/SPLT5.2/epochs/aft_ICA_rej/ \
 --SAVE_RESULT_ROOT ../results/temp_gen/ \
 --subj_num $sbj_num \
 --applyBaseline_bool \
 --cond_filter none \
 --cond_block later \
---cond_time prestim
+--cond_time prestim \ &
 #else
 #     echo "File $dcd_fn already exists."
 #fi
@@ -68,4 +69,4 @@ echo "Setting fan for " $gpu "back to auto"
 nvidia_fancontrol auto $gpu
 done
 
-#wait
+wait

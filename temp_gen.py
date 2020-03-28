@@ -6,11 +6,13 @@ Created on Sat Mar 28 09:08:45 2020
 @author: Maryam
 """
 import sys
-
-print(sys.path)
-sys.path.insert(0, '../SPLT_EEG')
-print(sys.path)
-print('------------------------')
+#in blanca
+#print(sys.path)
+#sys.path.insert(0, '../SPLT_EEG/')
+#sys.path.insert(0, "../SPLT_EEG/modules")
+#sys.path.insert(0,"/pl/active/ccnlab/users/zolfaghar/finalCodes_version5.2/github/SPLT_EEG/modules")
+#print(sys.path)
+#print('------------------------')
 
 import numpy as np
 import argparse
@@ -18,10 +20,14 @@ import pickle
 
 from sklearn.model_selection import StratifiedKFold, cross_val_score, StratifiedShuffleSplit, \
                                     RepeatedStratifiedKFold
-
+#in blanca
+#import read_prep_epochs
+#import apply_temp_gen
+#print('done')
 
 from modules.read_prep_epochs import read_prep_epochs
 from modules.apply_temp_gen import apply_temp_gen
+
 
 parser = argparse.ArgumentParser()
 
@@ -100,8 +106,8 @@ parser.add_argument("--scoring",
 main function
 """
 def main(args):
+    #[Grp1, Grp2, Grp3, Grp4, main_ptrn] = read_prep_epochs.read_prep_epochs(args) # in blanca
     [Grp1, Grp2, Grp3, Grp4, main_ptrn] = read_prep_epochs(args)
-
     cv = StratifiedShuffleSplit(n_splits=args.n_splits, random_state=args.random_state)
 
     sc_pck_G1, sc_pck_fit_G1 = apply_temp_gen(args, Grp1, cv)

@@ -12,3 +12,4 @@
     useful link: https://www.datacamp.com/community/tutorials/understanding-logistic-regression-python
 7. Read more about temporal generalization:
     -  It is analogous to transferring a trained model to a distinct learning problem
+8. importing modules in eCortex and in blanca was different, should see why
