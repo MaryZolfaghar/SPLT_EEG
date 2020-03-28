@@ -1,0 +1,9 @@
+Running on bnode0221
+/var/spool/slurmd/job8069367/slurm_script: line 34: start: command not found
+13:35:19
+1
+Process avgP1_scores_timeGen_earlyBlock_noneFilter_Subj_1.npy starts
+Traceback (most recent call last):
+  File "temp_gen.py", line 16, in <module>
+    from modules.read_prep_epochs import read_prep_epochs
+ImportError: No module named modules.read_prep_epochs
