@@ -8,6 +8,7 @@ Created on Sat Mar 28 09:08:45 2020
 
 import numpy as np
 import argparse
+import pickle
 
 from sklearn.model_selection import StratifiedKFold, cross_val_score, StratifiedShuffleSplit, \
                                     RepeatedStratifiedKFold
@@ -152,8 +153,12 @@ def main(args):
 
     # ------ Pack all scores and save them
     sc_subj_pck = [avg_sc, avg_diag_sc, avg_sc_fit, avg_diag_sc_fir]
-    np.save(args.SAVE_RESULT_ROOT + 'avgP%s_' %(main_ptrn) + \
-            fn_str_sbj, sc_subj_pck, allow_pickle=True, fix_imports=1)
+    fn_str = args.SAVE_RESULT_ROOT + 'avgP%s_' %(main_ptrn) + fn_str_sbj
+    with open(fn_str, 'wb') as f:
+	    pickle.dump(sc_subj_pck, f)
+
+    #np.save(args.SAVE_RESULT_ROOT + 'avgP%s_' %(main_ptrn) + \
+     #       fn_str_sbj, sc_subj_pck, allow_pickle=True, fix_imports=1)
     print('-------------------------------------------------------------------')
     print('Done saving')
 """
