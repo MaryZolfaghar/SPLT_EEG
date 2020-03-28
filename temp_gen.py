@@ -152,8 +152,8 @@ def main(args):
 
     # ------ Pack all scores and save them
     sc_subj_pck = [avg_sc, avg_diag_sc, avg_sc_fit, avg_diag_sc_fir]
-    np.save(args.SAVE_RESULT_ROOT + 'avgP%s_diag_' %(main_ptrn) + \
-            fn_str_sbj + '.npy', sc_subj_pck, allow_pickle=True, fix_imports=1)
+    np.save(args.SAVE_RESULT_ROOT + 'avgP%s_' %(main_ptrn) + \
+            fn_str_sbj, sc_subj_pck, allow_pickle=True, fix_imports=1)
     print('-------------------------------------------------------------------')
     print('Done saving')
 """
