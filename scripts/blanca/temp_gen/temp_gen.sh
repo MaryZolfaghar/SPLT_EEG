@@ -19,7 +19,8 @@ echo "Setting fan for" $gpu "to full"
 nvidia_fancontrol full $gpu
 done
 
-#cd ../../../tempGen/
+PYTHONPATH=/pl/active/ccnlab/users/zolfaghar/finalCodes_version5.2/github/SPLT_EEG/
+
 
 #=============================================================================#
 

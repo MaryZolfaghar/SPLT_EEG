@@ -5,7 +5,7 @@ Created on Sat Mar 28 09:08:45 2020
 
 @author: Maryam
 """
-import sys
+#import sys
 #in blanca
 #print(sys.path)
 #sys.path.insert(0, '../SPLT_EEG/')
