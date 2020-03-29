@@ -5,7 +5,6 @@
 #SBATCH --time=6:00:00
 #SBATCH --gres=gpu:1
 #SBATCH -c 4
-#SBATCH --reservation=mazlfghr_22
 
 
 export HOME=`getent passwd $USER | cut -d':' -f6`

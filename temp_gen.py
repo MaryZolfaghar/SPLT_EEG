@@ -126,7 +126,9 @@ def main(args):
     sc_fit_G3, sc_fit_diag_G3 = sc_pck_fit_G3
     sc_fit_G4, sc_fit_diag_G4 = sc_pck_fit_G4
 
-    fn_str_sbj='scores_timeGen_%sBlocks_%sFilter_Subj_%s' %(args.cond_block, args.cond_filter, args.subj_num)
+    fn_str_sbj='scores_timeGen_%sBlocks_%sFilter_%s_decod%s_bsline%s_Subj_%s' %(args.cond_block, args.cond_filter, args.cond_time, \
+                                                               args.cond_decoding, args.applyBaseline_bool, \
+                                                               args.subj_num)
 
     avg_sc= np.zeros([4, sc_G1.shape[0], sc_G1.shape[1]])
     avg_sc[0,:,:] = sc_G1

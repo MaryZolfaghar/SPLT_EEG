@@ -40,8 +40,11 @@ python temp_gen.py \
 --SAVE_RESULT_ROOT ../results/temp_gen/eCortex/ \
 --subj_num $sbj_num \
 --cond_filter none \
---cond_block early \
---cond_time poststim
+--cond_block later \
+--cond_time prestim \
+--applyBaseline_bool \
+--cond_decoding removeevoked\
+
 
 done
 

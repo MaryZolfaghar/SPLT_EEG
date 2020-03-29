@@ -11,7 +11,6 @@ export HOME=`getent passwd $USER | cut -d':' -f6`
 export PYTHONUNBUFFERED=1
 echo Running on $HOSTNAME
 
-# delete this
 
 source /usr/local/anaconda3/etc/profile.d/conda.sh
 conda activate /home/mazlfghr/.conda/envs/DeepLearningEEG
@@ -41,7 +40,11 @@ python temp_gen.py \
 --subj_num $sbj_num \
 --cond_filter none \
 --cond_block early \
---cond_time poststim
+--cond_time poststim \
+--applyBaseline_bool \
+--cond_decoding removeevoked\
+
+
 
 done
 

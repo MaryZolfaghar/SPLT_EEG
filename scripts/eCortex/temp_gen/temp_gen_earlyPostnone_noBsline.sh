@@ -41,8 +41,8 @@ python temp_gen.py \
 --subj_num $sbj_num \
 --cond_filter none \
 --cond_block early \
---cond_time poststim
-
+--cond_time poststim \
+--applyBaseline_bool \
 done
 
 for gpu in $gpus
