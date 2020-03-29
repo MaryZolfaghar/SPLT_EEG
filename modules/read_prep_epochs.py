@@ -51,11 +51,12 @@ def read_prep_epochs(args):
         subset._data=sl._data-se._data
 
     ##==========================================================================
-    if (args.cond_time=='prestim'):
-        subset= subset.crop(tmin=-0.4, tmax=0.05)
-    if (args.cond_time=='poststim'):
-        subset= subset.crop(tmin=0.05, tmax=0.45)
-    print('Shape of data after crop time is\n :')
+    subset= subset.crop(tmin=-0.45, tmax=0.45)
+    # if (args.cond_time=='prestim'):
+    #     subset= subset.crop(tmin=-0.4, tmax=0.05)
+    # if (args.cond_time=='poststim'):
+    #     subset= subset.crop(tmin=0.05, tmax=0.45)
+    # print('Shape of data after crop time is\n :')
     print(subset._data.shape)
     ##==========================================================================
     # Group data based on the previous trial
