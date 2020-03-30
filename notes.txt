@@ -1,4 +1,4 @@
-1. Difference between linearRegression and logisticRegression 
+1. Difference between linearRegression and logisticRegression
      We should use  linearRegression and in general linear models
 2. what is the difference between Scaler and StandardScaler in sklearn and MNE decoding
    TODO:  I should try both and see what will happen, can add an argument for using different pipelines
@@ -6,10 +6,17 @@
      TODO: try to use this as well
 4. Know about the CV in sklearn and cross_val_multiscore in MNE
     useful link: https://scikit-learn.org/stable/modules/cross_validation.html#cross-validation
-5. How AUC is reported with cross validation: 
+5. How AUC is reported with cross validation:
    useful link: https://scikit-learn.org/stable/auto_examples/model_selection/plot_roc_crossval.html#sphx-glr-auto-examples-model-selection-plot-roc-crossval-py
 6. It will be good to also try to split the train and test and do all fit on the train and use this link for evaluating the model with the test set
     useful link: https://www.datacamp.com/community/tutorials/understanding-logistic-regression-python
 7. Read more about temporal generalization:
     -  It is analogous to transferring a trained model to a distinct learning problem
 8. importing modules in eCortex and in blanca was different, should see why
+9. For the sake of faster running jobs, these are jobs for random simulation:
+    - sbatch scripts/eCortex/temp_gen/rand_temp_gen_earlyPrePostnone.sh
+    - sbatch scripts/eCortex/temp_gen/rand_temp_gen_earlyPrePostnone_noBsline.sh
+    - sbatch scripts/eCortex/temp_gen/rand_temp_gen_earlyPrePostnone_noBsline_rmvevoked.sh
+    - sbatch scripts/eCortex/temp_gen/rand_temp_gen_laterPrePostnone.sh
+    - sbatch scripts/eCortex/temp_gen/rand_temp_gen_laterPrePostnone_noBsline.sh
+    - sbatch scripts/eCortex/temp_gen/rand_temp_gen_laterPrePostnone_noBsline_rmvevoked.sh
