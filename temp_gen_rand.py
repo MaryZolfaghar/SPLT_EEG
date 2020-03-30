@@ -13,7 +13,7 @@ from sklearn.model_selection import StratifiedKFold, cross_val_score, Stratified
                                     RepeatedStratifiedKFold
 
 from modules.read_prep_epochs import read_prep_epochs
-from modules.apply_temp_gen import gen_null_data
+from modules.gen_null_data import gen_null_data
 
 
 parser = argparse.ArgumentParser()
