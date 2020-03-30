@@ -1,10 +1,7 @@
 #!/usr/bin/env bash
-#SBATCH -p local
+#SBATCH -p localLimited
 #SBATCH -A ecortex
-#SBATCH --mem=32G
-#SBATCH --time=6:00:00
-#SBATCH --gres=gpu:1
-#SBATCH -c 4
+#SBATCH --mem=16G
 
 
 export HOME=`getent passwd $USER | cut -d':' -f6`
@@ -40,9 +37,11 @@ python temp_gen.py \
 --SAVE_RESULT_ROOT ../results/temp_gen/eCortex/ \
 --subj_num $sbj_num \
 --cond_filter none \
---cond_block later \
+--cond_block early \
 --cond_time prestim \
 --applyBaseline_bool \
+--cond_decoding removeevoked\
+
 
 done
 
