@@ -20,3 +20,44 @@
     - sbatch scripts/eCortex/temp_gen/rand_temp_gen_laterPrePostnone.sh
     - sbatch scripts/eCortex/temp_gen/rand_temp_gen_laterPrePostnone_noBsline.sh
     - sbatch scripts/eCortex/temp_gen/rand_temp_gen_laterPrePostnone_noBsline_rmvevoked.sh
+10. Issues with these subjects:
+-- JOBID 83520: subject 22:
+raise ValueError('roc_auc scoring can only be computed for '
+ValueError: roc_auc scoring can only be computed for two-class problems.
+sc_pck_G4, sc_pck_fit_G4 = apply_temp_gen(args, Grp4, cv)
+
+-- 83530: subject 17
+sc_pck_G1, sc_pck_fit_G1 = apply_temp_gen(args, Grp1, cv)
+ValueError: roc_auc scoring can only be computed for two-class problems.
+
+-- 83534: subject 37
+sc_pck_G1, sc_pck_fit_G1 = apply_temp_gen(args, Grp1, cv)
+ValueError: The least populated class in y has only 1 member, which is too few.
+The minimum number of groups for any class cannot be less than 2.
+
+-- 83550:subject 27
+sc_pck_G1, sc_pck_fit_G1 = apply_temp_gen(args, Grp1, cv)
+(n_test, n_classes))
+ValueError: The test_size = 1 should be greater or equal to the number of classes = 2
+
+-- 83558: subject 17
+sc_pck_G2, sc_pck_fit_G2 = apply_temp_gen(args, Grp2, cv)
+(n_test, n_classes))
+ValueError: The test_size = 1 should be greater or equal to the number of classes = 2
+
+-- 83559: subject 25
+sc_pck_G1, sc_pck_fit_G1 = apply_temp_gen(args, Grp1, cv)
+raise ValueError("The least populated class in y has only 1"
+ValueError: The least populated class in y has only 1 member, which is too few.
+The minimum number of groups for any class cannot be less than 2.
+
+-- 83579: subject 27
+sc_pck_G1, sc_pck_fit_G1 = apply_temp_gen(args, Grp1, cv)
+train_size)
+ValueError: With n_samples=1, test_size=0.1 and train_size=None,
+the resulting train set will be empty. Adjust any of the aforementioned parameters.
+
+-- 83612: subject 70
+sc_pck_G1, sc_pck_fit_G1 = apply_temp_gen(args, Grp1, cv)
+(n_test, n_classes))
+ValueError: The test_size = 1 should be greater or equal to the number of classes = 2
