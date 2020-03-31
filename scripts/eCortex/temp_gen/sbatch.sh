@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #SBATCH -p localLimited
 #SBATCH -A ecortex
-#SBATCH --mem=16G
+#SBATCH --mem=1G
 
 export HOME=`getent passwd $USER | cut -d':' -f6`
 export PYTHONUNBUFFERED=1
@@ -20,12 +20,12 @@ echo $i
 sbj_num=$i
 # echo "Process $sbj_num starts"
 
-sbatch scripts/eCortex/temp_gen/temp_gen_earlyPrePost_none_noBsline_rmvevoked.sh $sbj_num &
-#sbatch scripts/eCortex/temp_gen/temp_gen_earlyPrePost_none_noBsline.sh $sbj_num &
-#sbatch scripts/eCortex/temp_gen/temp_gen_earlyPrePost_none.sh $sbj_num &
-sbatch scripts/eCortex/temp_gen/temp_gen_laterPrePost_none_noBsline_rmvevoked.sh $sbj_num &
-#sbatch scripts/eCortex/temp_gen/temp_gen_laterPrePost_none_noBsline.sh $sbj_num &
-#sbatch scripts/eCortex/temp_gen/temp_gen_laterPrePost_none.sh $sbj_num &
+#sbatch scripts/eCortex/temp_gen/temp_gen_earlyPrePost_none_noBsline_rmvevoked.sh $sbj_num &
+sbatch scripts/eCortex/temp_gen/temp_gen_earlyPrePost_none_noBsline.sh $sbj_num &
+sbatch scripts/eCortex/temp_gen/temp_gen_earlyPrePost_none.sh $sbj_num &
+#sbatch scripts/eCortex/temp_gen/temp_gen_laterPrePost_none_noBsline_rmvevoked.sh $sbj_num &
+sbatch scripts/eCortex/temp_gen/temp_gen_laterPrePost_none_noBsline.sh $sbj_num &
+sbatch scripts/eCortex/temp_gen/temp_gen_laterPrePost_none.sh $sbj_num &
 #sbatch scripts/eCortex/temp_gen/rand_temp_gen_earlyPrePost_none_noBsline_rmvevoked.sh $sbj_num &
 #sbatch scripts/eCortex/temp_gen/rand_temp_gen_earlyPrePost_none_noBsline.sh $sbj_num &
 #sbatch scripts/eCortex/temp_gen/rand_temp_gen_earlyPrePost_none.sh $sbj_num &
