@@ -69,7 +69,7 @@ parser.add_argument('--gen_rand_perm', action='store_true',
                     help='generate random permutation for each subject')
 parser.add_argument('--null_max_iter', type=int, default=10000,
                     help='max num of iterations in generating null distribution')
-parser.add_argument('--loop_null_iter', type=int, default=1000,
+parser.add_argument('--loop_null_iter', type=int, default=100,
                     help='max num of iterations in outer loop to go through sim')
 
 
@@ -94,6 +94,7 @@ main function
 """
 def main(args):
     #[Grp1, Grp2, Grp3, Grp4, main_ptrn] = read_prep_epochs.read_prep_epochs(args) # in blanca
+
     [Grp1, Grp2, Grp3, Grp4, main_ptrn] = read_prep_epochs(args)
     cv = StratifiedShuffleSplit(n_splits=args.n_splits, \
                                 random_state=args.random_state)
@@ -115,10 +116,10 @@ def main(args):
     sc_fit_G3, sc_fit_diag_G3 = sc_pck_fit_G3
     sc_fit_G4, sc_fit_diag_G4 = sc_pck_fit_G4
 
-    fn_str_sbj='scores_timeGen_%sBlocks_%sFilter_PrePost_decod%s_bsline%s_Subj_%s' \
+    fn_str_sbj='scores_timeGen_%sBlocks_%sFilter_PrePost_decod%s_bsline%s_%sk_Subj_%s' \
                 %(args.cond_block, args.cond_filter, \
                 args.cond_decoding, args.applyBaseline_bool, \
-                args.subj_num)
+                args.n_splits, args.subj_num)
 
     avg_sc= np.zeros([4, sc_G1.shape[0], sc_G1.shape[1]])
     avg_sc[0,:,:] = sc_G1
