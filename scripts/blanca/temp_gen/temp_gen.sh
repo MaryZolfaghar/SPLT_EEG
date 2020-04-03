@@ -10,7 +10,7 @@ export PYTHONUNBUFFERED=1
 echo Running on $HOSTNAME
 
 source /pl/active/ccnlab/conda/etc/profile.d/conda.sh
-conda activate /pl/active/ccnlab/users/zolfaghar/EEGexp
+conda activate /pl/active/ccnlab/users/zolfaghar/SPLTEEG
 
 gpus=$(echo $CUDA_VISIBLE_DEVICES | tr "," "\n")
 for gpu in $gpus
