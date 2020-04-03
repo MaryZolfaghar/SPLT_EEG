@@ -18,5 +18,4 @@ python temp_gen.py \
 --subj_num $1 \
 --cond_filter none \
 --cond_block early \
---applyBaseline_bool \
 --cond_decoding removeevoked\
