@@ -12,12 +12,12 @@ echo Running on $HOSTNAME
 source /pl/active/ccnlab/conda/etc/profile.d/conda.sh
 conda activate /pl/active/ccnlab/users/zolfaghar/conda/SPLTEEG
 
-gpus=$(echo $CUDA_VISIBLE_DEVICES | tr "," "\n")
-for gpu in $gpus
-do
-echo "Setting fan for" $gpu "to full"
-nvidia_fancontrol full $gpu
-done
+# gpus=$(echo $CUDA_VISIBLE_DEVICES | tr "," "\n")
+# for gpu in $gpus
+# do
+# echo "Setting fan for" $gpu "to full"
+# nvidia_fancontrol full $gpu
+# done
 
 PYTHONPATH=/pl/active/ccnlab/users/zolfaghar/finalCodes_version5.2/github/SPLT_EEG/
 
@@ -35,8 +35,7 @@ do
 echo $i
 sbj_num=$i
 
-dcd_fn="avgP1_scores_timeGen_earlyBlock_noneFilter_Subj_$sbj_num.npy"
-echo "Process $dcd_fn starts"
+echo "Process subject $sbj_num starts"
 
 python temp_gen.py \
 --SAVE_EPOCH_ROOT ../../../data/SPLT5.2/epochs/aft_ICA_rej/ \
@@ -49,10 +48,10 @@ python temp_gen.py \
 
 done
 
-for gpu in $gpus
-do
-echo "Setting fan for " $gpu "back to auto"
-nvidia_fancontrol auto $gpu
-done
+# for gpu in $gpus
+# do
+# echo "Setting fan for " $gpu "back to auto"
+# nvidia_fancontrol auto $gpu
+# done
 
 wait
