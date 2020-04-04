@@ -18,5 +18,5 @@ python temp_gen.py \
 --subj_num $1 \
 --cond_filter none \
 --cond_block later \
---cond_decoding removeevoked\
+--cond_decoding removeevoked \
 --n_splits 100 \

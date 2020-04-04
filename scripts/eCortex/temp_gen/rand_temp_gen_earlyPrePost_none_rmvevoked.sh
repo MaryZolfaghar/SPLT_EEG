@@ -19,4 +19,4 @@ python temp_gen_rand.py \
 --cond_filter none \
 --cond_block early \
 --applyBaseline_bool \
---cond_decoding removeevoked\
+--cond_decoding removeevoked \
