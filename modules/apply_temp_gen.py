@@ -14,7 +14,6 @@ from sklearn.svm import LinearSVC
 from mne.decoding import cross_val_multiscore, LinearModel, \
                          GeneralizingEstimator, Scaler, Vectorizer
 
-
 def apply_temp_gen(args, Grp_data, cv):
     le = LabelEncoder()
     clf_SVC  = make_pipeline(
@@ -26,9 +25,9 @@ def apply_temp_gen(args, Grp_data, cv):
 
     time_gen = GeneralizingEstimator(clf_SVC, scoring=args.scoring,
                                      n_jobs=args.n_jobs, verbose=True)
-    # print('In ApplyTempGen the size of y and X data is\n')
-    # print(np.unique(y))
-    # print(np.unique(Grp_data.copy().metadata.Trgt_Loc_main))
+    #print('In ApplyTempGen the size of y and X data is\n')
+    #print(np.unique(y))
+    #print(np.unique(Grp_data.copy().metadata.Trgt_Loc_main))
 
     scores = cross_val_multiscore(time_gen, X, y, cv=cv, n_jobs=args.n_jobs)
     scores = np.mean(scores, axis=0) #scores with cv

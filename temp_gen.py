@@ -101,7 +101,6 @@ parser.add_argument('--n_jobs', type=int, default=1,
 parser.add_argument("--scoring",
                     default='roc_auc',
                     help='The scoring method using in decoder')
-
 """
 main function
 """

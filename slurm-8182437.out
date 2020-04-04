@@ -1,0 +1,148 @@
+/home/mazo2428
+Running on bnode0221
+/var/spool/slurmd/job8182437/slurm_script: line 30: start: command not found
+14:18:39
+1
+Process avgP1_scores_timeGen_earlyBlock_noneFilter_Subj_1.npy starts
+------------------------
+2
+in 1
+in 2
+3
+4
+-------Arguments:---------
+Namespace(SAVE_EPOCH_ROOT='../../../data/SPLT5.2/epochs/aft_ICA_rej/', SAVE_RESULT_ROOT='../results/temp_gen/', applyBaseline_bool=True, cond_block='later', cond_decoding='none', cond_filter='none', cond_time='prestim', gen_decoder_scores=False, gen_rand_perm=False, loop_null_iter=5, max_iter=10000, n_jobs=1, n_splits=3, normalization_type='normal', null_max_iter=10000, num_classes=2, post_tmax=0.45, post_tmin=0.05, pre_tmax=-0.05, pre_tmin=-0.4, random_state=42, scoring='roc_auc', subj_num=1)
+--------------------------
+Reading ../../../data/SPLT5.2/epochs/aft_ICA_rej/epochs_sec_applyBaseline_subj1-afterRejICA-epo.fif ...
+Isotrak not found
+    Read a total of 1 projection items:
+        Average EEG reference (1 x 129) active
+    Found the data of interest:
+        t =    -400.00 ...    5000.00 ms
+        0 CTF compensation matrices available
+1197 matching events found
+Applying baseline correction (mode: mean)
+Adding metadata with 16 columns
+Created an SSP operator (subspace dimension = 1)
+1 projection items activated
+/pl/active/ccnlab/users/zolfaghar/finalCodes_version5.2/github/SPLT_EEG/modules/read_prep_epochs.py:54: RuntimeWarning: tmin is not in epochs time interval. tmin is set to epochs.tmin
+  subset= subset.crop(tmin=-0.45, tmax=0.45)
+(357, 129, 213)
+the pattern for this subj is :=====================================
+1
+          
+===================================================================
+in 3
+In ApplyTempGen the size of y and X data is
+
+[0 1]
+Traceback (most recent call last):
+  File "temp_gen.py", line 183, in <module>
+    main(args)
+  File "temp_gen.py", line 114, in main
+    sc_pck_G1, sc_pck_fit_G1 = apply_temp_gen(args, Grp1, cv)
+  File "/pl/active/ccnlab/users/zolfaghar/finalCodes_version5.2/github/SPLT_EEG/modules/apply_temp_gen.py", line 34, in apply_temp_gen
+    scores = cross_val_multiscore(time_gen, X, y, cv=cv, n_jobs=args.n_jobs)
+  File "/pl/active/ccnlab/users/zolfaghar/conda/SPLTEEG/lib/python3.8/site-packages/mne/decoding/base.py", line 451, in cross_val_multiscore
+    scores = parallel(p_func(clone(estimator), X, y, scorer, train, test,
+  File "/pl/active/ccnlab/users/zolfaghar/conda/SPLTEEG/lib/python3.8/site-packages/mne/decoding/base.py", line 451, in <genexpr>
+    scores = parallel(p_func(clone(estimator), X, y, scorer, train, test,
+  File "/pl/active/ccnlab/users/zolfaghar/conda/SPLTEEG/lib/python3.8/site-packages/mne/decoding/base.py", line 463, in _fit_and_score
+    from sklearn.model_selection._validation import _index_param_value
+ImportError: cannot import name '_index_param_value' from 'sklearn.model_selection._validation' (/pl/active/ccnlab/users/zolfaghar/conda/SPLTEEG/lib/python3.8/site-packages/sklearn/model_selection/_validation.py)
+2
+Process avgP1_scores_timeGen_earlyBlock_noneFilter_Subj_2.npy starts
+------------------------
+2
+in 1
+in 2
+3
+4
+-------Arguments:---------
+Namespace(SAVE_EPOCH_ROOT='../../../data/SPLT5.2/epochs/aft_ICA_rej/', SAVE_RESULT_ROOT='../results/temp_gen/', applyBaseline_bool=True, cond_block='later', cond_decoding='none', cond_filter='none', cond_time='prestim', gen_decoder_scores=False, gen_rand_perm=False, loop_null_iter=5, max_iter=10000, n_jobs=1, n_splits=3, normalization_type='normal', null_max_iter=10000, num_classes=2, post_tmax=0.45, post_tmin=0.05, pre_tmax=-0.05, pre_tmin=-0.4, random_state=42, scoring='roc_auc', subj_num=2)
+--------------------------
+Reading ../../../data/SPLT5.2/epochs/aft_ICA_rej/epochs_sec_applyBaseline_subj2-afterRejICA-epo.fif ...
+Isotrak not found
+    Read a total of 1 projection items:
+        Average EEG reference (1 x 129) active
+    Found the data of interest:
+        t =    -400.00 ...    5000.00 ms
+        0 CTF compensation matrices available
+920 matching events found
+Applying baseline correction (mode: mean)
+Adding metadata with 16 columns
+Created an SSP operator (subspace dimension = 1)
+1 projection items activated
+/pl/active/ccnlab/users/zolfaghar/finalCodes_version5.2/github/SPLT_EEG/modules/read_prep_epochs.py:54: RuntimeWarning: tmin is not in epochs time interval. tmin is set to epochs.tmin
+  subset= subset.crop(tmin=-0.45, tmax=0.45)
+(311, 129, 213)
+the pattern for this subj is :=====================================
+1
+          
+===================================================================
+in 3
+In ApplyTempGen the size of y and X data is
+
+[0 1]
+Traceback (most recent call last):
+  File "temp_gen.py", line 183, in <module>
+    main(args)
+  File "temp_gen.py", line 114, in main
+    sc_pck_G1, sc_pck_fit_G1 = apply_temp_gen(args, Grp1, cv)
+  File "/pl/active/ccnlab/users/zolfaghar/finalCodes_version5.2/github/SPLT_EEG/modules/apply_temp_gen.py", line 34, in apply_temp_gen
+    scores = cross_val_multiscore(time_gen, X, y, cv=cv, n_jobs=args.n_jobs)
+  File "/pl/active/ccnlab/users/zolfaghar/conda/SPLTEEG/lib/python3.8/site-packages/mne/decoding/base.py", line 451, in cross_val_multiscore
+    scores = parallel(p_func(clone(estimator), X, y, scorer, train, test,
+  File "/pl/active/ccnlab/users/zolfaghar/conda/SPLTEEG/lib/python3.8/site-packages/mne/decoding/base.py", line 451, in <genexpr>
+    scores = parallel(p_func(clone(estimator), X, y, scorer, train, test,
+  File "/pl/active/ccnlab/users/zolfaghar/conda/SPLTEEG/lib/python3.8/site-packages/mne/decoding/base.py", line 463, in _fit_and_score
+    from sklearn.model_selection._validation import _index_param_value
+ImportError: cannot import name '_index_param_value' from 'sklearn.model_selection._validation' (/pl/active/ccnlab/users/zolfaghar/conda/SPLTEEG/lib/python3.8/site-packages/sklearn/model_selection/_validation.py)
+3
+Process avgP1_scores_timeGen_earlyBlock_noneFilter_Subj_3.npy starts
+------------------------
+2
+in 1
+in 2
+3
+4
+-------Arguments:---------
+Namespace(SAVE_EPOCH_ROOT='../../../data/SPLT5.2/epochs/aft_ICA_rej/', SAVE_RESULT_ROOT='../results/temp_gen/', applyBaseline_bool=True, cond_block='later', cond_decoding='none', cond_filter='none', cond_time='prestim', gen_decoder_scores=False, gen_rand_perm=False, loop_null_iter=5, max_iter=10000, n_jobs=1, n_splits=3, normalization_type='normal', null_max_iter=10000, num_classes=2, post_tmax=0.45, post_tmin=0.05, pre_tmax=-0.05, pre_tmin=-0.4, random_state=42, scoring='roc_auc', subj_num=3)
+--------------------------
+Reading ../../../data/SPLT5.2/epochs/aft_ICA_rej/epochs_sec_applyBaseline_subj3-afterRejICA-epo.fif ...
+Isotrak not found
+    Read a total of 1 projection items:
+        Average EEG reference (1 x 129) active
+    Found the data of interest:
+        t =    -400.00 ...    5000.00 ms
+        0 CTF compensation matrices available
+1800 matching events found
+Applying baseline correction (mode: mean)
+Adding metadata with 16 columns
+Created an SSP operator (subspace dimension = 1)
+1 projection items activated
+/pl/active/ccnlab/users/zolfaghar/finalCodes_version5.2/github/SPLT_EEG/modules/read_prep_epochs.py:54: RuntimeWarning: tmin is not in epochs time interval. tmin is set to epochs.tmin
+  subset= subset.crop(tmin=-0.45, tmax=0.45)
+(406, 129, 213)
+the pattern for this subj is :=====================================
+1
+          
+===================================================================
+in 3
+In ApplyTempGen the size of y and X data is
+
+[0 1]
+Traceback (most recent call last):
+  File "temp_gen.py", line 183, in <module>
+    main(args)
+  File "temp_gen.py", line 114, in main
+    sc_pck_G1, sc_pck_fit_G1 = apply_temp_gen(args, Grp1, cv)
+  File "/pl/active/ccnlab/users/zolfaghar/finalCodes_version5.2/github/SPLT_EEG/modules/apply_temp_gen.py", line 34, in apply_temp_gen
+    scores = cross_val_multiscore(time_gen, X, y, cv=cv, n_jobs=args.n_jobs)
+  File "/pl/active/ccnlab/users/zolfaghar/conda/SPLTEEG/lib/python3.8/site-packages/mne/decoding/base.py", line 451, in cross_val_multiscore
+    scores = parallel(p_func(clone(estimator), X, y, scorer, train, test,
+  File "/pl/active/ccnlab/users/zolfaghar/conda/SPLTEEG/lib/python3.8/site-packages/mne/decoding/base.py", line 451, in <genexpr>
+    scores = parallel(p_func(clone(estimator), X, y, scorer, train, test,
+  File "/pl/active/ccnlab/users/zolfaghar/conda/SPLTEEG/lib/python3.8/site-packages/mne/decoding/base.py", line 463, in _fit_and_score
+    from sklearn.model_selection._validation import _index_param_value
+ImportError: cannot import name '_index_param_value' from 'sklearn.model_selection._validation' (/pl/active/ccnlab/users/zolfaghar/conda/SPLTEEG/lib/python3.8/site-packages/sklearn/model_selection/_validation.py)
