@@ -61,3 +61,11 @@ the resulting train set will be empty. Adjust any of the aforementioned paramete
 sc_pck_G1, sc_pck_fit_G1 = apply_temp_gen(args, Grp1, cv)
 (n_test, n_classes))
 ValueError: The test_size = 1 should be greater or equal to the number of classes = 2
+11. The whole number of files inside each folder after running for temporal
+generalization should be 59*2=116
+-use this command:
+ls | awk 'BEGIN{FS="_"}{ print $10 }' | sort -n | wc -l
+-and this command for only unique ones:
+ls | awk 'BEGIN{FS="_"}{ print $10 }' | sort -n | uniq | wc -l
+-command to not include subdirectories and count files in a directory
+ls -F |grep -v / | wc -l
