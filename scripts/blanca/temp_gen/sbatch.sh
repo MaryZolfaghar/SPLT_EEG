@@ -1,4 +1,4 @@
-!/bin/bash
+#!/bin/bash
 #SBATCH --time=72:00:00
 #SBATCH -c 16
 #SBATCH --qos=blanca-ccn
