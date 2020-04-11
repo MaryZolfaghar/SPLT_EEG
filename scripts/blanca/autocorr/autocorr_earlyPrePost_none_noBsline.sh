@@ -25,4 +25,3 @@ python autocorr.py \
 --subj_num $1 \
 --cond_filter none \
 --cond_block early \
---cond_decoding removeevoked \

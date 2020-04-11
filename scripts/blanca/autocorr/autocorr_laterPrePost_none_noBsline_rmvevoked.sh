@@ -26,4 +26,3 @@ python autocorr.py \
 --cond_filter none \
 --cond_block later \
 --cond_decoding removeevoked \
---n_splits 3 \

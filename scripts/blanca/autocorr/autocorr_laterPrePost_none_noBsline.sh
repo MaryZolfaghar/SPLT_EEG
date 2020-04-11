@@ -24,5 +24,4 @@ python autocorr.py \
 --SAVE_RESULT_ROOT ../results/autocorr/blanca/ \
 --subj_num $1 \
 --cond_filter none \
---cond_block early \
---cond_decoding removeevoked \
+--cond_block later \

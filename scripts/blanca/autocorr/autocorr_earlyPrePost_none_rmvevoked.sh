@@ -26,3 +26,4 @@ python autocorr.py \
 --cond_filter none \
 --cond_block early \
 --cond_decoding removeevoked \
+--applyBaseline_bool \
