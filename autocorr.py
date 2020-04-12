@@ -110,7 +110,7 @@ def main(args):
     avg_map[1,:,:] = map_G2
     avg_map[2,:,:] = map_G3
     avg_map[3,:,:] = map_G4
-    avg_map = np.mean(avg_map, axis=0)
+    # avg_map = np.mean(avg_map, axis=0)
 
     # ------ Pack all scores and save them
     fn_str = args.SAVE_RESULT_ROOT + 'avgP%s_' %(main_ptrn) + fn_str_sbj
