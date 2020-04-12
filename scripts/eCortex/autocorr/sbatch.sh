@@ -22,23 +22,23 @@ sbj_num=$i
 
 #1. - no baseline - #
 # - removed evoked - #
-# sbatch scripts/blanca/autocorr/autocorr_earlyPrePost_none_noBsline_rmvevoked.sh $sbj_num &
-# sbatch scripts/blanca/autocorr/autocorr_laterPrePost_none_noBsline_rmvevoked.sh $sbj_num &
+sbatch scripts/eCortex/autocorr/autocorr_earlyPrePost_none_noBsline_rmvevoked.sh $sbj_num &
+sbatch scripts/eCortex/autocorr/autocorr_laterPrePost_none_noBsline_rmvevoked.sh $sbj_num &
 
 #2. - no baseline - #
 # - none - #
-sbatch scripts/eCortex/autocorr/autocorr_earlyPrePost_none_noBsline.sh $sbj_num &
-sbatch scripts/eCortex/autocorr/autocorr_laterPrePost_none_noBsline.sh $sbj_num &
+# sbatch scripts/eCortex/autocorr/autocorr_earlyPrePost_none_noBsline.sh $sbj_num &
+# sbatch scripts/eCortex/autocorr/autocorr_laterPrePost_none_noBsline.sh $sbj_num &
 
 #3. - with baseline - #
 # - removed evoked - #
-sbatch scripts/eCortex/autocorr/autocorr_earlyPrePost_none_rmvevoked.sh $sbj_num &
-sbatch scripts/eCortex/autocorr/autocorr_laterPrePost_none_rmvevoked.sh $sbj_num &
+# sbatch scripts/eCortex/autocorr/autocorr_earlyPrePost_none_rmvevoked.sh $sbj_num &
+# sbatch scripts/eCortex/autocorr/autocorr_laterPrePost_none_rmvevoked.sh $sbj_num &
 
 #4. - with baseline - #
 # - none - #
-sbatch scripts/eCortex/autocorr/autocorr_earlyPrePost_none.sh $sbj_num &
-sbatch scripts/eCortex/autocorr/autocorr_laterPrePost_none.sh $sbj_num &
+# sbatch scripts/eCortex/autocorr/autocorr_earlyPrePost_none.sh $sbj_num &
+# sbatch scripts/eCortex/autocorr/autocorr_laterPrePost_none.sh $sbj_num &
 
 done
 
