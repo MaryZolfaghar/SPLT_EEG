@@ -128,7 +128,7 @@ def main(args):
     fn_str_sbj='scores_timeGen_%sBlocks_%sFilter_PrePost_decod%s_bsline%s_%sk_Subj_%s' \
             %(args.cond_block, args.cond_filter, \
             args.cond_decoding, args.applyBaseline_bool, \
-            args.n_splits, args.subj_num,)
+            args.n_splits, args.subj_num)
 
     avg_sc= np.zeros([4, sc_G1.shape[0], sc_G1.shape[1]])
     avg_sc[0,:,:] = sc_G1
