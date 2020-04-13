@@ -69,7 +69,7 @@ parser.add_argument('--gen_rand_perm', action='store_true',
                     help='generate random permutation for each subject')
 parser.add_argument('--null_max_iter', type=int, default=10000,
                     help='max num of iterations in generating null distribution')
-parser.add_argument('--loop_null_iter', type=int, default=100,
+parser.add_argument('--loop_null_iter', type=int, default=2,
                     help='max num of iterations in outer loop to go through sim')
 
 
@@ -120,6 +120,10 @@ def main(args):
                 %(args.cond_block, args.cond_filter, \
                 args.cond_decoding, args.applyBaseline_bool, \
                 args.n_splits, args.subj_num)
+    sc_G1=np.asarray(sc_G1)
+    sc_G2=np.asarray(sc_G2)
+    sc_G3=np.asarray(sc_G3)
+    sc_G4=np.asarray(sc_G4)
 
     avg_sc= np.zeros([4, sc_G1.shape[0], sc_G1.shape[1]])
     avg_sc[0,:,:] = sc_G1
