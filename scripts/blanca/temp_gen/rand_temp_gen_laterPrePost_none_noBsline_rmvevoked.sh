@@ -2,7 +2,7 @@
 #SBATCH --time=120:00:00
 #SBATCH -c 16
 #SBATCH --qos=blanca-ccn
-#SBATCH --mem=10G
+#SBATCH --mem=20G
 
 export HOME=`getent passwd $USER | cut -d':' -f6`
 echo $HOME
