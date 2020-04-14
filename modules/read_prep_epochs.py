@@ -28,11 +28,15 @@ def read_prep_epochs(args):
     else:
         pass
     ##==========================================================================
+    print('1')
     if subset['Block==7'].metadata.Ptrn_Type.values.shape[0]>0:
+        print('2')
        main_ptrn = subset['Block==7'].metadata.Ptrn_Type.values[0]
     else:
+        print('3')
        main_ptrn = subset['Block==8'].metadata.Ptrn_Type.values[0]
     ##==========================================================================
+    print('4')
     if args.cond_block=='early': #block 3-6
         subset = subset['Block<7'].copy()
         subset = subset['Block>2'].copy()
