@@ -93,28 +93,26 @@ parser.add_argument("--scoring",
 main function
 """
 def main(args):
-    #[Grp1, Grp2, Grp3, Grp4, main_ptrn] = read_prep_epochs.read_prep_epochs(args) # in blanca
-
     [Grp1, Grp2, Grp3, Grp4, main_ptrn] = read_prep_epochs(args)
     cv = StratifiedShuffleSplit(n_splits=args.n_splits, \
                                 random_state=args.random_state)
 
     sc_pck_G1, sc_pck_fit_G1 = gen_null_data(args, Grp1, cv)
-    sc_pck_G2, sc_pck_fit_G2 = gen_null_data(args, Grp2, cv)
-    sc_pck_G3, sc_pck_fit_G3 = gen_null_data(args, Grp3, cv)
-    sc_pck_G4, sc_pck_fit_G4 = gen_null_data(args, Grp4, cv)
+    # sc_pck_G2, sc_pck_fit_G2 = gen_null_data(args, Grp2, cv)
+    # sc_pck_G3, sc_pck_fit_G3 = gen_null_data(args, Grp3, cv)
+    # sc_pck_G4, sc_pck_fit_G4 = gen_null_data(args, Grp4, cv)
 
 
     # unpack them
     sc_G1, sc_diag_G1 = sc_pck_G1
-    sc_G2, sc_diag_G2 = sc_pck_G2
-    sc_G3, sc_diag_G3 = sc_pck_G3
-    sc_G4, sc_diag_G4 = sc_pck_G4
+    sc_G2, sc_diag_G2 = sc_pck_G1
+    sc_G3, sc_diag_G3 = sc_pck_G1
+    sc_G4, sc_diag_G4 = sc_pck_G1
 
     sc_fit_G1, sc_fit_diag_G1 = sc_pck_fit_G1
-    sc_fit_G2, sc_fit_diag_G2 = sc_pck_fit_G2
-    sc_fit_G3, sc_fit_diag_G3 = sc_pck_fit_G3
-    sc_fit_G4, sc_fit_diag_G4 = sc_pck_fit_G4
+    sc_fit_G2, sc_fit_diag_G2 = sc_pck_fit_G1
+    sc_fit_G3, sc_fit_diag_G3 = sc_pck_fit_G1
+    sc_fit_G4, sc_fit_diag_G4 = sc_pck_fit_G1
 
     fn_str_sbj='scores_timeGen_%sBlocks_%sFilter_PrePost_decod%s_bsline%s_%sk_Subj_%s' \
                 %(args.cond_block, args.cond_filter, \
