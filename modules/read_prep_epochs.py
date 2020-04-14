@@ -14,14 +14,11 @@ def read_prep_epochs(args):
         filename_epoch = args.SAVE_EPOCH_ROOT + \
                          'epochs_sec_subj%s-afterRejICA-epo.fif' \
                          %args.subj_num
-    print('5')
     epochs_orig = mne.read_epochs(filename_epoch, proj=True, preload=True,
                                   verbose=None)
-    print('6')
     epochs = epochs_orig.copy()
     subset = epochs['pred']['non'].copy()
     subset = subset.pick_types(eeg=True)
-    print('7')
     if (args.cond_decoding=='removeevoked'):
         # REMOVE EVOKED RESP.
         subset.subtract_evoked()    # remove evoked response
@@ -31,15 +28,11 @@ def read_prep_epochs(args):
     else:
         pass
     ##==========================================================================
-    print('1')
     if subset['Block==7'].metadata.Ptrn_Type.values.shape[0]>0:
-       print('2')
        main_ptrn = subset['Block==7'].metadata.Ptrn_Type.values[0]
     else:
-       print('3')
        main_ptrn = subset['Block==8'].metadata.Ptrn_Type.values[0]
     ##==========================================================================
-    print('4')
     if args.cond_block=='early': #block 3-6
         subset = subset['Block<7'].copy()
         subset = subset['Block>2'].copy()
