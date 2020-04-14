@@ -30,10 +30,10 @@ def read_prep_epochs(args):
     ##==========================================================================
     print('1')
     if subset['Block==7'].metadata.Ptrn_Type.values.shape[0]>0:
-        print('2')
+       print('2')
        main_ptrn = subset['Block==7'].metadata.Ptrn_Type.values[0]
     else:
-        print('3')
+       print('3')
        main_ptrn = subset['Block==8'].metadata.Ptrn_Type.values[0]
     ##==========================================================================
     print('4')
