@@ -100,26 +100,27 @@ def main(args):
                                 random_state=args.random_state)
 
     sc_pck_G1, sc_pck_fit_G1 = gen_null_data(args, Grp1, cv)
-    # sc_pck_G2, sc_pck_fit_G2 = gen_null_data(args, Grp2, cv)
-    # sc_pck_G3, sc_pck_fit_G3 = gen_null_data(args, Grp3, cv)
-    # sc_pck_G4, sc_pck_fit_G4 = gen_null_data(args, Grp4, cv)
+    sc_pck_G2, sc_pck_fit_G2 = gen_null_data(args, Grp2, cv)
+    sc_pck_G3, sc_pck_fit_G3 = gen_null_data(args, Grp3, cv)
+    sc_pck_G4, sc_pck_fit_G4 = gen_null_data(args, Grp4, cv)
 
 
     # unpack them
     sc_G1, sc_diag_G1 = sc_pck_G1
-    sc_G2, sc_diag_G2 = sc_pck_G1
-    sc_G3, sc_diag_G3 = sc_pck_G1
-    sc_G4, sc_diag_G4 = sc_pck_G1
+    sc_G2, sc_diag_G2 = sc_pck_G2
+    sc_G3, sc_diag_G3 = sc_pck_G3
+    sc_G4, sc_diag_G4 = sc_pck_G4
 
     sc_fit_G1, sc_fit_diag_G1 = sc_pck_fit_G1
-    sc_fit_G2, sc_fit_diag_G2 = sc_pck_fit_G1
-    sc_fit_G3, sc_fit_diag_G3 = sc_pck_fit_G1
-    sc_fit_G4, sc_fit_diag_G4 = sc_pck_fit_G1
+    sc_fit_G2, sc_fit_diag_G2 = sc_pck_fit_G2
+    sc_fit_G3, sc_fit_diag_G3 = sc_pck_fit_G3
+    sc_fit_G4, sc_fit_diag_G4 = sc_pck_fit_G4
 
     fn_str_sbj='scores_timeGen_%sBlocks_%sFilter_PrePost_decod%s_bsline%s_%sk_Subj_%s' \
                 %(args.cond_block, args.cond_filter, \
                 args.cond_decoding, args.applyBaseline_bool, \
                 args.n_splits, args.subj_num)
+
     sc_G1=np.asarray(sc_G1)
     sc_G2=np.asarray(sc_G2)
     sc_G3=np.asarray(sc_G3)
@@ -130,15 +131,25 @@ def main(args):
     sc_diag_G3=np.asarray(sc_diag_G3)
     sc_diag_G4=np.asarray(sc_diag_G4)
 
+    sc_fit_G1=np.asarray(sc_fit_G1)
+    sc_fit_G2=np.asarray(sc_fit_G2)
+    sc_fit_G3=np.asarray(sc_fit_G3)
+    sc_fit_G4=np.asarray(sc_fit_G4)
 
-    avg_sc= np.zeros([4, args.loop_null_iter, sc_G1.shape[0], sc_G1.shape[1]])
+    sc_fit_diag_G1=np.asarray(sc_fit_diag_G1)
+    sc_fit_diag_G2=np.asarray(sc_fit_diag_G2)
+    sc_fit_diag_G3=np.asarray(sc_fit_diag_G3)
+    sc_fit_diag_G4=np.asarray(sc_fit_diag_G4)
+
+
+    avg_sc= np.zeros([4, args.loop_null_iter, sc_G1.shape[1], sc_G1.shape[2]])
     avg_sc[0,:,:,:] = sc_G1
     avg_sc[1,:,:,:] = sc_G2
     avg_sc[2,:,:,:] = sc_G3
     avg_sc[3,:,:,:] = sc_G4
     avg_sc = np.mean(avg_sc, axis=0)
 
-    avg_diag_sc= np.zeros([4, args.loop_null_iter, sc_diag_G1.shape[0]])
+    avg_diag_sc= np.zeros([4, args.loop_null_iter, sc_diag_G1.shape[1]])
     avg_diag_sc[0,:,:]=sc_diag_G1
     avg_diag_sc[1,:,:]=sc_diag_G2
     avg_diag_sc[2,:,:]=sc_diag_G3
@@ -146,14 +157,14 @@ def main(args):
     avg_diag_sc = np.mean(avg_diag_sc, axis=0)
 
     #------ save fit results (no cross validation)
-    avg_sc_fit= np.zeros([4, args.loop_null_iter, sc_fit_G1.shape[0], sc_fit_G1.shape[1]])
+    avg_sc_fit= np.zeros([4, args.loop_null_iter, sc_fit_G1.shape[1], sc_fit_G1.shape[2]])
     avg_sc_fit[0,:,:,:] = sc_fit_G1
     avg_sc_fit[1,:,:,:] = sc_fit_G2
     avg_sc_fit[2,:,:,:] = sc_fit_G3
     avg_sc_fit[3,:,:,:] = sc_fit_G4
     avg_sc_fit = np.mean(avg_sc_fit, axis=0)
 
-    avg_diag_sc_fir= np.zeros([4, args.loop_null_iter, sc_diag_G1.shape[0]])
+    avg_diag_sc_fir= np.zeros([4, args.loop_null_iter, sc_fit_diag_G1.shape[1]])
     avg_diag_sc_fir[0,:,:]=sc_fit_diag_G1
     avg_diag_sc_fir[1,:,:]=sc_fit_diag_G2
     avg_diag_sc_fir[2,:,:]=sc_fit_diag_G3
