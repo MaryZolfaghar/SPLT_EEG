@@ -40,12 +40,12 @@ echo "Process subject $sbj_num starts"
 
 python temp_gen.py \
 --SAVE_EPOCH_ROOT ../../../data/SPLT5.2/epochs/aft_ICA_rej/ \
---SAVE_RESULT_ROOT ../results/temp_gen/ \
+--SAVE_RESULT_ROOT ../results/temp_gen2/ \
 --subj_num $sbj_num \
 --cond_filter none \
 --cond_block later \
 --cond_decoding removeevoked \
---n_splits 100 \
+--n_splits 3 \
 
 done
 
