@@ -114,8 +114,10 @@ parser.add_argument('--smooth_lvl', type=int, default=55,
 main function
 """
 def main(args):
-    #[Grp1, Grp2, Grp3, Grp4, main_ptrn] = read_prep_epochs.read_prep_epochs(args) # in blanca
-    [Grp1, Grp2, Grp3, Grp4, main_ptrn] = read_prep_epochs(args)
+    # [Grp1, Grp2, Grp3, Grp4, main_ptrn] = read_prep_epochs(args)
+    Grp1, Grp2, Grp3, Grp4, Grps_dt, Grps_avg, smooth_evk, main_ptrn] = \
+    read_prep_epochs(args)
+    
     cv = StratifiedShuffleSplit(n_splits=args.n_splits, random_state=args.random_state)
 
     sc_pck_G1, sc_pck_fit_G1 = apply_temp_gen(args, Grp1, cv)
