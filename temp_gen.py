@@ -106,7 +106,7 @@ parser.add_argument("--scoring",
                     help='The scoring method using in decoder')
 
 # Plot
-parser.add_argument('--smth_lvl', type=int, default=55,
+parser.add_argument('--smooth_lvl', type=int, default=55,
                     help='smoothing level for savgol_filter')
 
 

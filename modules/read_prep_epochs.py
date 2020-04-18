@@ -129,12 +129,11 @@ def read_prep_epochs(args):
     # smoothing data
     evk_data = np.mean(Grps_avg, axis=1)
     smooth_evk = np.zeros((5, evk_data.shape[1]))
-    smooth_evk[0,:] = savgol_filter(evk_data[0,:],args.smth_lvl, 3)
-    smooth_evk[1,:] = savgol_filter(evk_data[1,:],args.smth_lvl, 3)
-    smooth_evk[2,:] = savgol_filter(evk_data[2,:],args.smth_lvl, 3)
-    smooth_evk[3,:] = savgol_filter(evk_data[3,:],args.smth_lvl, 3)
-    smooth_evk[4,:] = savgol_filter(np.mean(evk_data, 0),args.smth_lvl, 3)
+    smooth_evk[0,:] = savgol_filter(evk_data[0,:], args.smooth_lvl, 3)
+    smooth_evk[1,:] = savgol_filter(evk_data[1,:], args.smooth_lvl, 3)
+    smooth_evk[2,:] = savgol_filter(evk_data[2,:], args.smooth_lvl, 3)
+    smooth_evk[3,:] = savgol_filter(evk_data[3,:], args.smooth_lvl, 3)
+    smooth_evk[4,:] = savgol_filter(np.mean(evk_data, 0), args.smooth_lvl, 3)
     ##==========================================================================
     # return Grp1, Grp2, Grp3, Grp4, main_ptrn
     return Grp1, Grp2, Grp3, Grp4, Grps_dt, Grps_avg, smooth_evk, main_ptrn
-    
