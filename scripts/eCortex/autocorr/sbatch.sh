@@ -32,8 +32,8 @@ sbatch scripts/eCortex/autocorr/autocorr_laterPrePost_none_noBsline_rmvevoked.sh
 
 #3. - with baseline - #
 # - removed evoked - #
-# sbatch scripts/eCortex/autocorr/autocorr_earlyPrePost_none_rmvevoked.sh $sbj_num &
-# sbatch scripts/eCortex/autocorr/autocorr_laterPrePost_none_rmvevoked.sh $sbj_num &
+sbatch scripts/eCortex/autocorr/autocorr_earlyPrePost_none_rmvevoked.sh $sbj_num &
+sbatch scripts/eCortex/autocorr/autocorr_laterPrePost_none_rmvevoked.sh $sbj_num &
 
 #4. - with baseline - #
 # - none - #

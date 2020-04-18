@@ -41,7 +41,10 @@ parser.add_argument('--cond_decoding',
                     choices=['none','removeevoked','resampled'],
                     default='none',
                     help='Period of analysis related to the onset(stim presentation)')
-
+parser.add_argument('--mtdt_feat',
+                    choices=['Trgt_Loc_main','Trgt_Loc_prev'],
+                    default='Trgt_Loc_prev',
+                    help='Metadata feature for group data according to)')
 
 # EEG
 parser.add_argument('--subj_num', type=int, default=1,
@@ -69,7 +72,7 @@ parser.add_argument('--gen_rand_perm', action='store_true',
                     help='generate random permutation for each subject')
 parser.add_argument('--null_max_iter', type=int, default=10000,
                     help='max num of iterations in generating null distribution')
-parser.add_argument('--loop_null_iter', type=int, default=5,
+parser.add_argument('--loop_null_iter', type=int, default=100,
                     help='max num of iterations in outer loop to go through sim')
 
 
@@ -88,34 +91,46 @@ parser.add_argument('--n_jobs', type=int, default=1,
 parser.add_argument("--scoring",
                     default='roc_auc',
                     help='The scoring method using in decoder')
+
+# Plot
+parser.add_argument('--smth_lvl', type=int, default=55,
+                    help='smoothing level for savgol_filter')
+
+
 """
 main function
 """
 def main(args):
-    [Grp1, Grp2, Grp3, Grp4, main_ptrn] = read_prep_epochs(args)
+    # [Grp1, Grp2, Grp3, Grp4, main_ptrn] = read_prep_epochs(args)
+    Grp1, Grp2, Grp3, Grp4, Grps_dt, Grps_avg, smooth_evk, main_ptrn] = \
+    read_prep_epochs(args)
 
     map_G1 = generate_correlation_map(Grp1)
     map_G2 = generate_correlation_map(Grp2)
     map_G3 = generate_correlation_map(Grp3)
     map_G4 = generate_correlation_map(Grp4)
 
-
-    fn_str_sbj='autocorr_%sBlocks_%sFilter_PrePost_decod%s_bsline%s_%sk_Subj_%s' \
-            %(args.cond_block, args.cond_filter, \
-            args.cond_decoding, args.applyBaseline_bool, \
-            args.n_splits, args.subj_num)
+    fn_str_sbj='%sBlocks_%sFilter_PrePost_decod%s_bsline%s_%sk_%s_Subj_%s' \
+                %(args.cond_block, args.cond_filter, \
+                args.cond_decoding, args.applyBaseline_bool, \
+                args.n_splits, args.mtdt_feat, args.subj_num)
 
     avg_map= np.zeros([4, map_G1.shape[0], map_G1.shape[1]])
     avg_map[0,:,:] = map_G1
     avg_map[1,:,:] = map_G2
     avg_map[2,:,:] = map_G3
     avg_map[3,:,:] = map_G4
-    # avg_map = np.mean(avg_map, axis=0)
 
     # ------ Pack all scores and save them
-    fn_str = args.SAVE_RESULT_ROOT + 'avgP%s_' %(main_ptrn) + fn_str_sbj
-    with open(fn_str, 'wb') as f:
-	    pickle.dump(avg_map, f)
+    fn_str1 = args.SAVE_RESULT_ROOT + 'avgP%s_autocorr_' %(main_ptrn) + fn_str_sbj
+    fn_str2 = args.SAVE_RESULT_ROOT + 'avgP%s_grpdata_' %(main_ptrn) + fn_str_sbj
+    fn_str3 = args.SAVE_RESULT_ROOT + 'avgP%s_smthdata_' %(main_ptrn) + fn_str_sbj
+    with open(fn_str1, 'wb') as f1:
+	    pickle.dump(avg_map, f1)
+    with open(fn_str2, 'wb') as f2:
+	    pickle.dump(Grps_dt, f2)
+    with open(fn_str3, 'wb') as f3:
+	    pickle.dump(smooth_evk, f3)
 
     print('-------------------------------------------------------------------')
     print('Done saving')

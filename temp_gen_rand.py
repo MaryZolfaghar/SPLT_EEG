@@ -41,7 +41,10 @@ parser.add_argument('--cond_decoding',
                     choices=['none','removeevoked','resampled'],
                     default='none',
                     help='Period of analysis related to the onset(stim presentation)')
-
+parser.add_argument('--mtdt_feat',
+                    choices=['Trgt_Loc_main','Trgt_Loc_prev'],
+                    default='Trgt_Loc_prev',
+                    help='Metadata feature for group data according to)')
 
 # EEG
 parser.add_argument('--subj_num', type=int, default=1,
@@ -89,35 +92,43 @@ parser.add_argument("--scoring",
                     default='roc_auc',
                     help='The scoring method using in decoder')
 
+# Plot
+parser.add_argument('--smth_lvl', type=int, default=55,
+                    help='smoothing level for savgol_filter')
+
+
 """
 main function
 """
 def main(args):
-    [Grp1, Grp2, Grp3, Grp4, main_ptrn] = read_prep_epochs(args)
+    # [Grp1, Grp2, Grp3, Grp4, main_ptrn] = read_prep_epochs(args)
+    [Grp1, Grp2, Grp3, Grp4, Grps_dt, Grps_avg, smooth_evk, main_ptrn] = \
+    read_prep_epochs(args)
+
     cv = StratifiedShuffleSplit(n_splits=args.n_splits, \
                                 random_state=args.random_state)
 
-    sc_pck_G1, sc_pck_fit_G1 = gen_null_data(args, Grp1, cv)
-    # sc_pck_G2, sc_pck_fit_G2 = gen_null_data(args, Grp2, cv)
-    # sc_pck_G3, sc_pck_fit_G3 = gen_null_data(args, Grp3, cv)
-    # sc_pck_G4, sc_pck_fit_G4 = gen_null_data(args, Grp4, cv)
 
+    sc_pck_G1, sc_pck_fit_G1 = gen_null_data(args, Grp1, cv)
+    sc_pck_G2, sc_pck_fit_G2 = gen_null_data(args, Grp2, cv)
+    sc_pck_G3, sc_pck_fit_G3 = gen_null_data(args, Grp3, cv)
+    sc_pck_G4, sc_pck_fit_G4 = gen_null_data(args, Grp4, cv)
 
     # unpack them
     sc_G1, sc_diag_G1 = sc_pck_G1
-    sc_G2, sc_diag_G2 = sc_pck_G1
-    sc_G3, sc_diag_G3 = sc_pck_G1
-    sc_G4, sc_diag_G4 = sc_pck_G1
+    sc_G2, sc_diag_G2 = sc_pck_G2
+    sc_G3, sc_diag_G3 = sc_pck_G3
+    sc_G4, sc_diag_G4 = sc_pck_G4
 
     sc_fit_G1, sc_fit_diag_G1 = sc_pck_fit_G1
-    sc_fit_G2, sc_fit_diag_G2 = sc_pck_fit_G1
-    sc_fit_G3, sc_fit_diag_G3 = sc_pck_fit_G1
-    sc_fit_G4, sc_fit_diag_G4 = sc_pck_fit_G1
+    sc_fit_G2, sc_fit_diag_G2 = sc_pck_fit_G2
+    sc_fit_G3, sc_fit_diag_G3 = sc_pck_fit_G3
+    sc_fit_G4, sc_fit_diag_G4 = sc_pck_fit_G4
 
-    fn_str_sbj='scores_timeGen_%sBlocks_%sFilter_PrePost_decod%s_bsline%s_%sk_Subj_%s' \
+    fn_str_sbj='scores_timeGen_%sBlocks_%sFilter_PrePost_decod%s_bsline%s_%sk_%s_Subj_%s' \
                 %(args.cond_block, args.cond_filter, \
                 args.cond_decoding, args.applyBaseline_bool, \
-                args.n_splits, args.subj_num)
+                args.n_splits, args.mtdt_feat, args.subj_num)
 
     sc_G1=np.asarray(sc_G1)
     sc_G2=np.asarray(sc_G2)

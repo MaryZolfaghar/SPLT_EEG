@@ -19,3 +19,4 @@ python autocorr.py \
 --subj_num $1 \
 --cond_filter none \
 --cond_block early \
+--mtdt_feat Trgt_Loc_main \ 

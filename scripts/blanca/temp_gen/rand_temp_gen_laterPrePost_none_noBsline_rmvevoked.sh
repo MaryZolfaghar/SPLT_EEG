@@ -28,3 +28,4 @@ python temp_gen_rand.py \
 --cond_decoding removeevoked \
 --loop_null_iter 100 \
 --n_splits 3 \
+--mtdt_feat Trgt_Loc_prev \ 
