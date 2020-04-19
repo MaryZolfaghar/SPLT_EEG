@@ -93,10 +93,10 @@ def read_prep_epochs(args):
     print('minimum ind across four groups: ', ind1)
     ##==========================================================================
     # Equalize the number of each group
-    Grp1._data = Grp1._data[:ind1,:,:]
-    Grp2._data = Grp2._data[:ind1,:,:]
-    Grp3._data = Grp3._data[:ind1,:,:]
-    Grp4._data = Grp4._data[:ind1,:,:]
+    # Grp1._data = Grp1._data[:ind1,:,:]
+    # Grp2._data = Grp2._data[:ind1,:,:]
+    # Grp3._data = Grp3._data[:ind1,:,:]
+    # Grp4._data = Grp4._data[:ind1,:,:]
     ##==========================================================================
     print('the pattern for this subj is :=====================================')
     print(main_ptrn)
@@ -120,10 +120,10 @@ def read_prep_epochs(args):
                         / (np.max(Grp4._data) - np.min(Grp4._data) - 1)
     ##==========================================================================
     Grps_dt = np.zeros((4, ind1, ind2, ind3))
-    Grps_dt[0,:,:,:]=Grp1._data
-    Grps_dt[1,:,:,:]=Grp2._data
-    Grps_dt[2,:,:,:]=Grp3._data
-    Grps_dt[3,:,:,:]=Grp4._data
+    Grps_dt[0,:,:,:]=Grp1._data[:ind1,:,:]
+    Grps_dt[1,:,:,:]=Grp2._data[:ind1,:,:]
+    Grps_dt[2,:,:,:]=Grp3._data[:ind1,:,:]
+    Grps_dt[3,:,:,:]=Grp4._data[:ind1,:,:]
     Grps_avg = np.mean(Grps_dt, axis=1)
     ##==========================================================================
     # smoothing data
