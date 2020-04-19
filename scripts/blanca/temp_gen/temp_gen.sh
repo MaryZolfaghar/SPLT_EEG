@@ -46,6 +46,7 @@ python temp_gen.py \
 --cond_block later \
 --cond_decoding removeevoked \
 --n_splits 3 \
+--mtdt_feat Trgt_Loc_prev \ 
 
 done
 
