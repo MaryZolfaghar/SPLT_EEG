@@ -44,7 +44,7 @@ parser.add_argument('--cond_decoding',
 parser.add_argument('--mtdt_feat',
                     choices=['Trgt_Loc_main','Trgt_Loc_prev'],
                     default='Trgt_Loc_prev',
-                    help='Metadata feature for group data according to)')
+                    help='Metadata feature for group data according to')
 
 # EEG
 parser.add_argument('--subj_num', type=int, default=1,
