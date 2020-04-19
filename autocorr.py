@@ -102,7 +102,7 @@ main function
 """
 def main(args):
     # [Grp1, Grp2, Grp3, Grp4, main_ptrn] = read_prep_epochs(args)
-    Grp1, Grp2, Grp3, Grp4, Grps_dt, Grps_avg, smooth_evk, main_ptrn] = \
+    [Grp1, Grp2, Grp3, Grp4, Grps_dt, Grps_avg, smooth_evk, main_ptrn] = \
     read_prep_epochs(args)
 
     map_G1 = generate_correlation_map(Grp1)
