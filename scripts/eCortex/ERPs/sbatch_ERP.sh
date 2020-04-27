@@ -21,16 +21,64 @@ do
 echo $i
 sbj_num=$i
 
+# ----------------------- upcoming trial ------------------#
 #1. - no baseline - #
 # - removed evoked - #
-sbatch scripts/eCortex/ERPs/ERP_earlyPrePost_none_noBsline_rmvevoked.sh $sbj_num &
-sbatch scripts/eCortex/ERPs/ERP_laterPrePost_none_noBsline_rmvevoked.sh $sbj_num &
+# sbatch scripts/eCortex/ERPs/ERP_earlyPrePost_none_noBsline_rmvevoked.sh $sbj_num &
+# sbatch scripts/eCortex/ERPs/ERP_laterPrePost_none_noBsline_rmvevoked.sh $sbj_num &
 
 #2. - no baseline - #
 # - removed evoked - #
 # only occipital channels
-sbatch scripts/eCortex/ERPs/ERP_earlyPrePost_none_noBsline_rmvevoked_occ.sh $sbj_num &
-sbatch scripts/eCortex/ERPs/ERP_laterPrePost_none_noBsline_rmvevoked_occ.sh $sbj_num &
+# sbatch scripts/eCortex/ERPs/ERP_earlyPrePost_none_noBsline_rmvevoked_occ.sh $sbj_num &
+# sbatch scripts/eCortex/ERPs/ERP_laterPrePost_none_noBsline_rmvevoked_occ.sh $sbj_num &
+
+#3. - no baseline - #
+# - none - #
+# only occipital channels
+sbatch scripts/eCortex/ERPs/ERP_earlyPrePost_none_noBsline_occ.sh $sbj_num &
+sbatch scripts/eCortex/ERPs/ERP_laterPrePost_none_noBsline_occ.sh $sbj_num &
+
+#4. - WITH baseline - #
+# - removed evoked  - #
+# only occipital channels
+sbatch scripts/eCortex/ERPs/ERP_earlyPrePost_none_rmvevoked_occ.sh $sbj_num &
+sbatch scripts/eCortex/ERPs/ERP_laterPrePost_none_rmvevoked_occ.sh $sbj_num &
+
+#5. - WITH baseline - #
+# - none - #
+# only occipital channels
+sbatch scripts/eCortex/ERPs/ERP_earlyPrePost_none_occ.sh $sbj_num &
+sbatch scripts/eCortex/ERPs/ERP_laterPrePost_none_occ.sh $sbj_num &
+
+# # ----------------------- previous trial ------------------#
+#1. - no baseline - #
+# - removed evoked - #
+# only occipital channels
+# prev trials
+sbatch scripts/eCortex/ERPs/ERP_earlyPrePost_none_noBsline_rmvevoked_occ_prevLoc.sh $sbj_num &
+sbatch scripts/eCortex/ERPs/ERP_laterPrePost_none_noBsline_rmvevoked_occ_prevLoc.sh $sbj_num &
+
+#2. - no baseline - #
+# - none - #
+# only occipital channels
+# prev trials
+sbatch scripts/eCortex/ERPs/ERP_earlyPrePost_none_noBsline_occ_prevLoc.sh $sbj_num &
+sbatch scripts/eCortex/ERPs/ERP_laterPrePost_none_noBsline_occ_prevLoc.sh $sbj_num &
+#
+#3. - WITH baseline - #
+# - removed evoked  - #
+# only occipital channels
+# prev trials
+sbatch scripts/eCortex/ERPs/ERP_earlyPrePost_none_rmvevoked_occ_prevLoc.sh $sbj_num &
+sbatch scripts/eCortex/ERPs/ERP_laterPrePost_none_rmvevoked_occ_prevLoc.sh $sbj_num &
+
+#- WITH baseline - #
+# - none  - #
+# only occipital channels
+# prev trials
+sbatch scripts/eCortex/ERPs/ERP_earlyPrePost_none_occ_prevLoc.sh $sbj_num &
+sbatch scripts/eCortex/ERPs/ERP_laterPrePost_none_occ_prevLoc.sh $sbj_num &
 
 done
 
