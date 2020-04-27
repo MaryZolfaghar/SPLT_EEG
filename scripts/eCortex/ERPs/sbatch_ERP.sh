@@ -29,8 +29,8 @@ sbatch scripts/eCortex/ERPs/ERP_laterPrePost_none_noBsline_rmvevoked.sh $sbj_num
 #2. - no baseline - #
 # - removed evoked - #
 # only occipital channels
-sbatch scripts/eCortex/ERPs/ERP_earlyPrePost_none_noBsline_rmvevoked_occ $sbj_num &
-sbatch scripts/eCortex/ERPs/ERP_laterPrePost_none_noBsline_rmvevoked_occ $sbj_num &
+sbatch scripts/eCortex/ERPs/ERP_earlyPrePost_none_noBsline_rmvevoked_occ.sh $sbj_num &
+sbatch scripts/eCortex/ERPs/ERP_laterPrePost_none_noBsline_rmvevoked_occ.sh $sbj_num &
 
 done
 
