@@ -6,6 +6,8 @@ import numpy as np
 from scipy.signal import savgol_filter
 
 def read_prep_epochs(args):
+
+
     if args.applyBaseline_bool:
         filename_epoch = args.SAVE_EPOCH_ROOT + \
                          'epochs_sec_applyBaseline_subj%s-afterRejICA-epo.fif' \
@@ -27,6 +29,17 @@ def read_prep_epochs(args):
         subset = subset.resample(args.n_resampling, npad='auto')
     else:
         pass
+    ##==========================================================================
+    # Select EEG channels of the back
+    if args.occ_channels:
+        picks_back_brain = ['E56', 'E63', 'E68', 'E73', 'E81', 'E88', 'E94', 'E99', 'E107',
+        'E57', 'E64', 'E69', 'E74', 'E82', 'E89', 'E95', 'E100',
+        'E50', 'E58', 'E65', 'E70', 'E75', 'E83', 'E90', 'E96', 'E101',
+        'E51', 'E59', 'E66', 'E71', 'E76', 'E84', 'E91', 'E97',
+        'E52', 'E60', 'E67', 'E72', 'E77', 'E85', 'E92'
+        'E53', 'E61', 'E62', 'E78','E86'
+        ]
+        subset = subset.pick_types(eeg=True, selection=picks_back_brain)
     ##==========================================================================
     if subset['Block==7'].metadata.Ptrn_Type.values.shape[0]>0:
        main_ptrn = subset['Block==7'].metadata.Ptrn_Type.values[0]

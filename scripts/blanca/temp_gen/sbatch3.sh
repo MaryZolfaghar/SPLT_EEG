@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --time=72:00:00
+#SBATCH --time=120:00:00
 #SBATCH -c 16
 #SBATCH --qos=blanca-ccn
 #SBATCH --mem=20G
