@@ -101,10 +101,10 @@ def main(args):
 
 
 
-    fn_str_sbj='%sBlocks_%sFilter_PrePost_decod%s_bsline%s_%sk_%s_Subj_%s' \
+    fn_str_sbj='%sBlocks_%sFilter_PrePost_decod%s_bsline%s_%sChann_%s_Subj_%s' \
                 %(args.cond_block, args.cond_filter, \
                 args.cond_decoding, args.applyBaseline_bool, \
-                args.n_splits, args.mtdt_feat, args.subj_num)
+                args.occ_channels, args.mtdt_feat, args.subj_num)
 
 
     # ------ Pack all scores and save them
