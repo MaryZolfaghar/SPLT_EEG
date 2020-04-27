@@ -38,7 +38,7 @@ parser.add_argument('--cond_decoding',
                     help='Period of analysis related to the onset(stim presentation)')
 parser.add_argument('--mtdt_feat',
                     choices=['Trgt_Loc_main','Trgt_Loc_prev'],
-                    default='Trgt_Loc_prev',
+                    default='Trgt_Loc_main',
                     help='Metadata feature for group data according to)')
 
 # EEG

@@ -20,3 +20,5 @@ python ERP_anal.py \
 --cond_filter none \
 --cond_block early \
 --cond_decoding removeevoked \
+--mtdt_feat Trgt_Loc_main \
+--occ_channels \
