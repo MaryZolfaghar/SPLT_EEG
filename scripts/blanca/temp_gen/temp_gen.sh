@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --time=120:00:00
+#SBATCH --time=200:00:00
 #SBATCH -c 16
 #SBATCH --qos=blanca-ccn
 #SBATCH --mem=10G
@@ -46,7 +46,7 @@ python temp_gen.py \
 --cond_block later \
 --cond_decoding removeevoked \
 --n_splits 3 \
---mtdt_feat Trgt_Loc_prev \ 
+--mtdt_feat Trgt_Loc_prev \
 
 done
 
