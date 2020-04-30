@@ -22,7 +22,11 @@ conda activate /pl/active/ccnlab/users/zolfaghar/conda/SPLTEEG
 
 PYTHONPATH=/pl/active/ccnlab/users/zolfaghar/finalCodes_version5.2/github/SPLT_EEG/
 
-selected_subj=(70 71 72 73 74)
+# selected_subj=(70 71 72 73 74)
+
+selected_subj=( 2 3 5 7 12 18 19 21 23 24 27\
+                29 30 31 32 33 34 36 37 42 47 51 53 \
+                55 56 57 58 61 62 65 67 69 70 71 72 73 74)
 
 
 

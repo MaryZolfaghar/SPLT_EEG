@@ -24,10 +24,10 @@ PYTHONPATH=/pl/active/ccnlab/users/zolfaghar/finalCodes_version5.2/github/SPLT_E
 #all subjects
 
 
-selected_subj=(35 36 37 38 39 42 43 44 45 46 47 48 51 52 53 \
-               55 56 57 58 59 60 61 62 63 64 65 66 67 68 69)
+# selected_subj=(35 36 37 38 39 42 43 44 45 46 47 48 51 52 53 \
+#                55 56 57 58 59 60 61 62 63 64 65 66 67 68 69)
 
-
+selected_subj=( 1 9 16 26 28 35 38 39 60 66 68 ) # later
 
 start time
 date +"%H:%M:%S"
@@ -98,7 +98,7 @@ echo "Process subject $sbj_num starts"
 # - removed evoked - #
 # - 3k - #
 # - 100 iterations - #
-sbatch scripts/blanca/temp_gen/rand_temp_gen_earlyPrePost_none_noBsline_rmvevoked.sh $sbj_num &
+# sbatch scripts/blanca/temp_gen/rand_temp_gen_earlyPrePost_none_noBsline_rmvevoked.sh $sbj_num &
 sbatch scripts/blanca/temp_gen/rand_temp_gen_laterPrePost_none_noBsline_rmvevoked.sh $sbj_num &
 
 # - no baseline - #
