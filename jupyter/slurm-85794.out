@@ -1,0 +1,220 @@
+activating environment DeepLearningEEG
+SLURM_NODELIST=local01
+SLURM_JOB_NAME=start_jupyter.sh
+XDG_SESSION_ID=18997
+SLURMD_NODENAME=local01
+SLURM_TOPOLOGY_ADDR=local01
+HOSTNAME=local01
+SLURM_PRIO_PROCESS=0
+SLURM_NODE_ALIASES=(null)
+TERM=xterm-256color
+SHELL=/bin/bash
+SLURM_JOB_QOS=this qos allows for short jobs that cannot be preempted
+TMPDIR=/tmp
+SLURM_TOPOLOGY_ADDR_PATTERN=node
+SSH_CLIENT=198.11.28.168 63411 22
+CONDA_SHLVL=1
+CONDA_PROMPT_MODIFIER=(DeepLearningEEG) 
+SSH_TTY=/dev/pts/8
+NO_PROXY=localhost,127.0.0.1,192.168.1.0/24,.e-cortex.com
+SLURM_NNODES=1
+http_proxy=http://192.168.1.41:3128/
+USER=mazlfghr
+LD_LIBRARY_PATH=/usr/local/cuda/lib64
+CONDA_EXE=/usr/local/anaconda3/bin/conda
+SLURM_JOBID=85794
+SSH_AUTH_SOCK=/tmp/ssh-Igli3XkdOe/agent.29037
+TMOUT=1200
+SLURM_TASKS_PER_NODE=1
+MAIL=/var/mail/mazlfghr
+PATH=/home/mazlfghr/.conda/envs/DeepLearningEEG/bin:/usr/local/anaconda3/condabin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+SLURM_WORKING_CLUSTER=cluster:ashitaka:6817:8704:109
+SLURM_JOB_ID=85794
+SLURM_CPUS_PER_TASK=4
+CONDA_PREFIX=/home/mazlfghr/.conda/envs/DeepLearningEEG
+SLURM_JOB_USER=mazlfghr
+PWD=/home/mazlfghr/projects/SPLT/SPLT_EEG/jupyter
+CUDA_VISIBLE_DEVICES=0
+LANG=en_US.UTF-8
+SLURM_JOB_UID=1021
+SLURM_NODEID=0
+SLURM_SUBMIT_DIR=/home/mazlfghr/projects/SPLT/SPLT_EEG/jupyter
+SLURM_TASK_PID=28058
+SLURM_CPUS_ON_NODE=4
+HTTPS_PROXY=http://192.168.1.41:3128/
+https_proxy=http://192.168.1.41:3128/
+SLURM_PROCID=0
+ENVIRONMENT=BATCH
+SLURM_JOB_NODELIST=local01
+SHLVL=3
+HOME=/home/mazlfghr
+SLURM_LOCALID=0
+SLURM_JOB_GID=1021
+SLURM_JOB_CPUS_PER_NODE=4
+SLURM_CLUSTER_NAME=cluster
+no_proxy=localhost,127.0.0.1,192.168.1.0/24,.e-cortex.com
+SLURM_GTIDS=0
+SLURM_SUBMIT_HOST=ashitaka
+HTTP_PROXY=http://192.168.1.41:3128/
+SLURM_JOB_PARTITION=local
+CONDA_PYTHON_EXE=/usr/local/anaconda3/bin/python
+SLURM_JOB_GRES=0
+LOGNAME=mazlfghr
+GPU_DEVICE_ORDINAL=0
+SLURM_JOB_ACCOUNT=ecortex
+XDG_DATA_DIRS=/usr/local/share:/usr/share:/var/lib/snapd/desktop
+SSH_CONNECTION=198.11.28.168 63411 10.0.1.41 22
+SLURM_JOB_NUM_NODES=1
+CONDA_DEFAULT_ENV=DeepLearningEEG
+XDG_RUNTIME_DIR=/run/user/1021
+SLURM_MEM_PER_NODE=24576
+_=/usr/bin/env
+SLURM_NODELIST=local01
+SLURM_JOB_NAME=start_jupyter.sh
+XDG_SESSION_ID=18997
+SLURMD_NODENAME=local01
+SLURM_TOPOLOGY_ADDR=local01
+HOSTNAME=local01
+SLURM_PRIO_PROCESS=0
+SLURM_NODE_ALIASES=(null)
+TERM=xterm-256color
+SHELL=/bin/bash
+SLURM_JOB_QOS=this qos allows for short jobs that cannot be preempted
+TMPDIR=/tmp
+SLURM_TOPOLOGY_ADDR_PATTERN=node
+SSH_CLIENT=198.11.28.168 63411 22
+CONDA_SHLVL=1
+CONDA_PROMPT_MODIFIER=(DeepLearningEEG) 
+SSH_TTY=/dev/pts/8
+NO_PROXY=localhost,127.0.0.1,192.168.1.0/24,.e-cortex.com
+SLURM_NNODES=1
+http_proxy=http://192.168.1.41:3128/
+USER=mazlfghr
+LD_LIBRARY_PATH=/usr/local/cuda/lib64
+CONDA_EXE=/usr/local/anaconda3/bin/conda
+SLURM_JOBID=85794
+SSH_AUTH_SOCK=/tmp/ssh-Igli3XkdOe/agent.29037
+TMOUT=1200
+SLURM_TASKS_PER_NODE=1
+MAIL=/var/mail/mazlfghr
+PATH=/home/mazlfghr/.conda/envs/DeepLearningEEG/bin:/usr/local/anaconda3/condabin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+SLURM_WORKING_CLUSTER=cluster:ashitaka:6817:8704:109
+SLURM_JOB_ID=85794
+SLURM_CPUS_PER_TASK=4
+CONDA_PREFIX=/home/mazlfghr/.conda/envs/DeepLearningEEG
+SLURM_JOB_USER=mazlfghr
+PWD=/home/mazlfghr/projects/SPLT/SPLT_EEG/jupyter
+CUDA_VISIBLE_DEVICES=0
+LANG=en_US.UTF-8
+SLURM_JOB_UID=1021
+SLURM_NODEID=0
+SLURM_SUBMIT_DIR=/home/mazlfghr/projects/SPLT/SPLT_EEG/jupyter
+SLURM_TASK_PID=28058
+SLURM_CPUS_ON_NODE=4
+HTTPS_PROXY=http://192.168.1.41:3128/
+https_proxy=http://192.168.1.41:3128/
+SLURM_PROCID=0
+ENVIRONMENT=BATCH
+SLURM_JOB_NODELIST=local01
+SHLVL=3
+HOME=/home/mazlfghr
+SLURM_LOCALID=0
+SLURM_JOB_GID=1021
+SLURM_JOB_CPUS_PER_NODE=4
+SLURM_CLUSTER_NAME=cluster
+no_proxy=localhost,127.0.0.1,192.168.1.0/24,.e-cortex.com
+SLURM_GTIDS=0
+SLURM_SUBMIT_HOST=ashitaka
+HTTP_PROXY=http://192.168.1.41:3128/
+SLURM_JOB_PARTITION=local
+CONDA_PYTHON_EXE=/usr/local/anaconda3/bin/python
+SLURM_JOB_GRES=0
+LOGNAME=mazlfghr
+GPU_DEVICE_ORDINAL=0
+SLURM_JOB_ACCOUNT=ecortex
+XDG_DATA_DIRS=/usr/local/share:/usr/share:/var/lib/snapd/desktop
+SSH_CONNECTION=198.11.28.168 63411 10.0.1.41 22
+SLURM_JOB_NUM_NODES=1
+CONDA_DEFAULT_ENV=DeepLearningEEG
+SLURM_MEM_PER_NODE=24576
+_=/usr/bin/env
+[W 12:44:10.225 NotebookApp] All authentication is disabled.  Anyone who can connect to this server will be able to run code.
+[I 12:44:10.246 NotebookApp] Serving notebooks from local directory: /home/mazlfghr/projects/SPLT/SPLT_EEG/jupyter
+[I 12:44:10.246 NotebookApp] The Jupyter Notebook is running at:
+[I 12:44:10.246 NotebookApp] http://localhost:8996/
+[I 12:44:10.246 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[W 12:46:00.859 NotebookApp] 404 GET /notebooks/jupyter/tinkering_myownTempGen.ipynb (127.0.0.1): No such file or directory: jupyter/tinkering_myownTempGen.ipynb
+[W 12:46:01.026 NotebookApp] 404 GET /notebooks/jupyter/tinkering_myownTempGen.ipynb (127.0.0.1) 168.36ms referer=None
+[W 12:46:08.226 NotebookApp] 404 GET /notebooks/jupyter/tinkering_myownTempGen.ipynb (127.0.0.1): No such file or directory: jupyter/tinkering_myownTempGen.ipynb
+[W 12:46:08.228 NotebookApp] 404 GET /notebooks/jupyter/tinkering_myownTempGen.ipynb (127.0.0.1) 2.47ms referer=None
+[I 12:46:08.464 NotebookApp] 302 GET /notebooks (127.0.0.1) 1.52ms
+[I 12:46:24.145 NotebookApp] Kernel started: 9a085849-6777-41c3-a13c-326a4b407f45
+[I 12:48:27.214 NotebookApp] Saving file at /tinkering_myownTempGen.ipynb
+[I 12:50:26.336 NotebookApp] Saving file at /tinkering_myownTempGen.ipynb
+[I 12:58:25.987 NotebookApp] Saving file at /tinkering_myownTempGen.ipynb
+[I 13:00:25.678 NotebookApp] Saving file at /tinkering_myownTempGen.ipynb
+[I 13:02:25.639 NotebookApp] Saving file at /tinkering_myownTempGen.ipynb
+[I 13:04:25.448 NotebookApp] Saving file at /tinkering_myownTempGen.ipynb
+[I 13:06:25.473 NotebookApp] Saving file at /tinkering_myownTempGen.ipynb
+[I 13:08:25.327 NotebookApp] Saving file at /tinkering_myownTempGen.ipynb
+[I 13:10:25.239 NotebookApp] Saving file at /tinkering_myownTempGen.ipynb
+[I 13:12:26.429 NotebookApp] Saving file at /tinkering_myownTempGen.ipynb
+[I 13:14:26.421 NotebookApp] Saving file at /tinkering_myownTempGen.ipynb
+[I 13:16:26.130 NotebookApp] Saving file at /tinkering_myownTempGen.ipynb
+[I 13:18:25.575 NotebookApp] Saving file at /tinkering_myownTempGen.ipynb
+[I 13:20:29.226 NotebookApp] Saving file at /tinkering_myownTempGen.ipynb
+[I 13:22:26.666 NotebookApp] Saving file at /tinkering_myownTempGen.ipynb
+[I 13:24:26.273 NotebookApp] Saving file at /tinkering_myownTempGen.ipynb
+[I 13:26:25.865 NotebookApp] Saving file at /tinkering_myownTempGen.ipynb
+[I 13:30:25.460 NotebookApp] Saving file at /tinkering_myownTempGen.ipynb
+[I 13:32:25.307 NotebookApp] Saving file at /tinkering_myownTempGen.ipynb
+[I 13:34:25.952 NotebookApp] Saving file at /tinkering_myownTempGen.ipynb
+[I 13:55:33.162 NotebookApp] Saving file at /tinkering_myownTempGen.ipynb
+[I 13:57:30.716 NotebookApp] Saving file at /tinkering_myownTempGen.ipynb
+[I 14:03:33.144 NotebookApp] Saving file at /tinkering_myownTempGen.ipynb
+[I 14:05:33.050 NotebookApp] Saving file at /tinkering_myownTempGen.ipynb
+[I 14:07:32.554 NotebookApp] Saving file at /tinkering_myownTempGen.ipynb
+[I 14:09:32.331 NotebookApp] Saving file at /tinkering_myownTempGen.ipynb
+[I 14:11:39.636 NotebookApp] Saving file at /tinkering_myownTempGen.ipynb
+[W 14:34:18.148 NotebookApp] 404 GET /api/contents/jupyter?type=directory&_=1586781445825 (127.0.0.1): No such file or directory: jupyter
+[W 14:34:18.148 NotebookApp] No such file or directory: jupyter
+[W 14:34:18.148 NotebookApp] 404 GET /api/contents/jupyter?type=directory&_=1586781445825 (127.0.0.1) 0.90ms referer=http://localhost:8997/tree/jupyter
+[W 14:35:54.434 NotebookApp] 404 GET /api/contents/jupyter?type=directory&_=1586781445828 (127.0.0.1): No such file or directory: jupyter
+[W 14:35:54.434 NotebookApp] No such file or directory: jupyter
+[W 14:35:54.434 NotebookApp] 404 GET /api/contents/jupyter?type=directory&_=1586781445828 (127.0.0.1) 0.97ms referer=http://localhost:8997/tree/jupyter
+[W 14:37:42.713 NotebookApp] Notebook generatingResultPlots_autocorrelation.ipynb is not trusted
+[I 14:37:53.645 NotebookApp] Kernel started: 975d304a-478b-40f7-a97b-09e1fd781b5c
+[I 14:39:55.685 NotebookApp] Saving file at /generatingResultPlots_autocorrelation.ipynb
+[W 14:39:55.686 NotebookApp] Notebook generatingResultPlots_autocorrelation.ipynb is not trusted
+[I 14:40:07.256 NotebookApp] Saving file at /tinkering_myownTempGen.ipynb
+[I 14:42:08.261 NotebookApp] Saving file at /tinkering_myownTempGen.ipynb
+[I 14:44:08.049 NotebookApp] Saving file at /tinkering_myownTempGen.ipynb
+[I 14:46:07.764 NotebookApp] Saving file at /tinkering_myownTempGen.ipynb
+[I 14:48:08.381 NotebookApp] Saving file at /tinkering_myownTempGen.ipynb
+[I 14:50:08.263 NotebookApp] Saving file at /tinkering_myownTempGen.ipynb
+[I 14:52:07.748 NotebookApp] Saving file at /tinkering_myownTempGen.ipynb
+[I 14:54:08.052 NotebookApp] Saving file at /tinkering_myownTempGen.ipynb
+[I 14:56:08.046 NotebookApp] Saving file at /tinkering_myownTempGen.ipynb
+[I 14:58:11.341 NotebookApp] Saving file at /tinkering_myownTempGen.ipynb
+[I 15:22:00.489 NotebookApp] Saving file at /generatingResultPlots_autocorrelation.ipynb
+[W 15:22:00.490 NotebookApp] Notebook generatingResultPlots_autocorrelation.ipynb is not trusted
+[I 15:23:59.920 NotebookApp] Saving file at /generatingResultPlots_autocorrelation.ipynb
+[W 15:23:59.920 NotebookApp] Notebook generatingResultPlots_autocorrelation.ipynb is not trusted
+[W 15:33:28.735 NotebookApp] 404 GET /api/contents/jupyter?type=directory&_=1586781445831 (127.0.0.1): No such file or directory: jupyter
+[W 15:33:28.736 NotebookApp] No such file or directory: jupyter
+[W 15:33:28.736 NotebookApp] 404 GET /api/contents/jupyter?type=directory&_=1586781445831 (127.0.0.1) 1.79ms referer=http://localhost:8997/tree/jupyter
+[I 15:37:59.659 NotebookApp] Saving file at /generatingResultPlots_autocorrelation.ipynb
+[W 15:37:59.659 NotebookApp] Notebook generatingResultPlots_autocorrelation.ipynb is not trusted
+[I 15:40:00.296 NotebookApp] Saving file at /generatingResultPlots_autocorrelation.ipynb
+[W 15:40:00.296 NotebookApp] Notebook generatingResultPlots_autocorrelation.ipynb is not trusted
+[I 15:42:02.038 NotebookApp] Saving file at /generatingResultPlots_autocorrelation.ipynb
+[I 15:49:25.331 NotebookApp] Saving file at /tinkering_myownTempGen.ipynb
+[I 15:51:24.115 NotebookApp] Saving file at /tinkering_myownTempGen.ipynb
+[I 15:53:24.773 NotebookApp] Saving file at /tinkering_myownTempGen.ipynb
+[I 16:09:12.092 NotebookApp] Saving file at /generatingResultPlots_autocorrelation.ipynb
+[I 16:16:23.303 NotebookApp] Saving file at /generatingResultPlots_autocorrelation.ipynb
+[W 17:45:54.295 NotebookApp] WebSocket ping timeout after 119918 ms.
+[W 17:45:54.810 NotebookApp] WebSocket ping timeout after 119901 ms.
+[I 17:45:59.298 NotebookApp] Starting buffering for 975d304a-478b-40f7-a97b-09e1fd781b5c:08c4d66af1894e25bf108e80113ae0e8
+[I 17:45:59.812 NotebookApp] Starting buffering for 9a085849-6777-41c3-a13c-326a4b407f45:0ea2c9d00e9f40aab97ad4b5ee8ab141
+slurmstepd: error: *** JOB 85794 ON local01 CANCELLED AT 2020-04-13T18:44:17 DUE TO TIME LIMIT ***
