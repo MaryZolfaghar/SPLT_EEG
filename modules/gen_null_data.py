@@ -67,6 +67,9 @@ def gen_null_data(args, Grp_data, cv):
 
         rand_scores_fit.append(scores)
         rand_diag_fit.append(scores_diag)
+
+        if (nitr>0 and nitr%30==0):
+             
     print('**************************************************************')
     print('End of the rand loop:\n')
     print(str(datetime.datetime.now()))
