@@ -59,6 +59,8 @@ parser.add_argument('--post_tmin', type=float, default=0.05,
                     help='tmin crop for poststim period')
 parser.add_argument('--post_tmax', type=float, default=0.45,
                     help='tmax crop for poststim period')
+parser.add_argument('--occ_channels', action='store_true',
+                    help='only choose channels in occipital areas')
 
 
 parser.add_argument('--num_classes', type=int, default=2,
@@ -101,7 +103,6 @@ parser.add_argument('--smooth_lvl', type=int, default=55,
 main function
 """
 def main(args):
-    # [Grp1, Grp2, Grp3, Grp4, main_ptrn] = read_prep_epochs(args)
     [Grp1, Grp2, Grp3, Grp4, Grps_dt, Grps_avg, smooth_evk, main_ptrn] = \
     read_prep_epochs(args)
 
