@@ -84,7 +84,7 @@ sbj_num=$i
 # - 3k - #
 # - 100 iterations - #
 sbatch scripts/eCortex/temp_gen/rand_temp_gen_earlyPrePost_none_noBsline_rmvevoked.sh $sbj_num &
-# sbatch scripts/eCortex/temp_gen/rand_temp_gen_laterPrePost_none_noBsline_rmvevoked.sh $sbj_num &
+sbatch scripts/eCortex/temp_gen/rand_temp_gen_laterPrePost_none_noBsline_rmvevoked.sh $sbj_num &
 
 # - no baseline - #
 # - removed evoked - #
