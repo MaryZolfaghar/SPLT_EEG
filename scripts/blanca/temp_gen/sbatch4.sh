@@ -24,9 +24,8 @@ PYTHONPATH=/pl/active/ccnlab/users/zolfaghar/finalCodes_version5.2/github/SPLT_E
 
 # selected_subj=(70 71 72 73 74)
 
-selected_subj=( 5 7 12 18 19 21 23 24 27\
-                29 30 31 32 33 34 51  \
-                55 56 73 74)
+selected_subj=( 2 3 36 37 42 47 53 57 58 61\
+                62 65 67 69 70 71 72)
 
 
 
