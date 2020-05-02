@@ -10,7 +10,7 @@ echo Running on $HOSTNAME
 source /usr/local/anaconda3/etc/profile.d/conda.sh
 conda activate /home/mazlfghr/.conda/envs/DeepLearningEEG
 
-selected_subj=( 1 9 16 26 28 35 38 39 60 66 68 ) # later
+# selected_subj=( 1 9 16 26 28 35 38 39 60 66 68 ) # later
 
 for i in "${selected_subj[@]}"
 do
