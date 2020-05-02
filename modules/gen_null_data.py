@@ -29,19 +29,19 @@ def gen_null_data(args, Grp_data, cv):
 
     rand_scores_fit = []
     rand_diag_fit = []
-    print('**************************************************************')
+    print('1**************************************************************')
     print('Start of the rand loop:\n')
     print(str(datetime.datetime.now()))
-    print('**************************************************************')
+    print('2**************************************************************')
 
     for nitr in range(args.loop_null_iter):
-        print('**************************************************************')
+        print('3**************************************************************')
         print('**************************************************************')
         print('Iteration:\n')
         print(str(datetime.datetime.now()))
         print(nitr)
         print('**************************************************************')
-        print('**************************************************************')
+        print('4**************************************************************')
         true_Y = y.copy();
         indx = np.random.permutation(true_Y.shape[0]);
         shuffled_Y = true_Y.copy()[indx];
@@ -69,11 +69,11 @@ def gen_null_data(args, Grp_data, cv):
         rand_diag_fit.append(scores_diag)
 
         if (nitr>0 and nitr%30==0):
-             
-    print('**************************************************************')
+
+    print('5**************************************************************')
     print('End of the rand loop:\n')
     print(str(datetime.datetime.now()))
-    print('**************************************************************')
+    print('6**************************************************************')
     rand_scores_pck = (rand_scores.copy(), rand_diag.copy())
     rand_scores_pck_fit = (rand_scores_fit.copy(), rand_diag_fit.copy())
 
