@@ -11,8 +11,8 @@ source /usr/local/anaconda3/etc/profile.d/conda.sh
 conda activate /home/mazlfghr/.conda/envs/DeepLearningEEG
 
 # removed subjects : 17 22 37 27 17 25 27 70, issues are in the notes.txt
-selected_subj=( 4 10 15 20 44 )
-# 52 64
+selected_subj=( 2 3 36 37 42 )# 47 53 57 58 61\
+                # 62 65 67 69 70 71 72)
 
 for i in "${selected_subj[@]}"
 do
