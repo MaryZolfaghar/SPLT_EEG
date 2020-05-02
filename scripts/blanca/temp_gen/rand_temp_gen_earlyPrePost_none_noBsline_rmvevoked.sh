@@ -26,6 +26,6 @@ python temp_gen_rand.py \
 --cond_filter none \
 --cond_block early \
 --cond_decoding removeevoked \
---loop_null_iter 50 \
+--loop_null_iter 15 \
 --n_splits 3 \
 --occ_channels \
