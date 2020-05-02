@@ -110,6 +110,11 @@ def main(args):
     cv = StratifiedShuffleSplit(n_splits=args.n_splits, \
                                 random_state=args.random_state)
 
+    fn_str_sbj='scores_timeGen_%sBlocks_%sFilter_PrePost_decod%s_bsline%s_%sk_%s_Subj_%s' \
+                %(args.cond_block, args.cond_filter, \
+                args.cond_decoding, args.applyBaseline_bool, \
+                args.n_splits, args.mtdt_feat, args.subj_num)
+
     print('**************************************************************')
     print('**************************************************************')
     print('GROUP 1 STARTS -----------------------------------------------')
@@ -117,7 +122,13 @@ def main(args):
     print('**************************************************************')
     print('**************************************************************')
     sc_pck_G1, sc_pck_fit_G1 = gen_null_data(args, Grp1, cv)
-
+    # ------ Pack all scores and save them
+    sc_subj_pck = [sc_pck_G1, sc_pck_fit_G1]
+    fn_str = args.SAVE_RESULT_ROOT + '/interim_save/' + 'randG1_avgP%s_' %(main_ptrn) + fn_str_sbj
+    with open(fn_str, 'wb') as f:
+	    pickle.dump(sc_subj_pck, f)
+    print('-------------------------------------------------------------------')
+    print('Done G1 saving')
     print('**************************************************************')
     print('**************************************************************')
     print('GROUP 1 ENDs -----------------------------------------------')
@@ -135,7 +146,13 @@ def main(args):
     print('**************************************************************')
     print('**************************************************************')
     sc_pck_G2, sc_pck_fit_G2 = gen_null_data(args, Grp2, cv)
-
+    # ------ Pack all scores and save them
+    sc_subj_pck = [sc_pck_G2, sc_pck_fit_G2]
+    fn_str = args.SAVE_RESULT_ROOT + '/interim_save/' + 'randG2_avgP%s_' %(main_ptrn) + fn_str_sbj
+    with open(fn_str, 'wb') as f:
+	    pickle.dump(sc_subj_pck, f)
+    print('-------------------------------------------------------------------')
+    print('Done G2 saving')
     print('**************************************************************')
     print('**************************************************************')
     print('GROUP 2 ENDs -----------------------------------------------')
@@ -153,7 +170,13 @@ def main(args):
     print('**************************************************************')
     print('**************************************************************')
     sc_pck_G3, sc_pck_fit_G3 = gen_null_data(args, Grp3, cv)
-
+    # ------ Pack all scores and save them
+    sc_subj_pck = [sc_pck_G3, sc_pck_fit_G3]
+    fn_str = args.SAVE_RESULT_ROOT + '/interim_save/' + 'randG3_avgP%s_' %(main_ptrn) + fn_str_sbj
+    with open(fn_str, 'wb') as f:
+	    pickle.dump(sc_subj_pck, f)
+    print('-------------------------------------------------------------------')
+    print('Done G3 saving')
     print('**************************************************************')
     print('**************************************************************')
     print('GROUP 3 ENDs -----------------------------------------------')
@@ -171,7 +194,13 @@ def main(args):
     print('**************************************************************')
     print('**************************************************************')
     sc_pck_G4, sc_pck_fit_G4 = gen_null_data(args, Grp4, cv)
-
+    # ------ Pack all scores and save them
+    sc_subj_pck = [sc_pck_G4, sc_pck_fit_G4]
+    fn_str = args.SAVE_RESULT_ROOT + '/interim_save/' + 'randG4_avgP%s_' %(main_ptrn) + fn_str_sbj
+    with open(fn_str, 'wb') as f:
+	    pickle.dump(sc_subj_pck, f)
+    print('-------------------------------------------------------------------')
+    print('Done G4 saving')
     print('**************************************************************')
     print('**************************************************************')
     print('GROUP 4 ENDs -------------------------------------------------')
@@ -194,10 +223,6 @@ def main(args):
     sc_fit_G3, sc_fit_diag_G3 = sc_pck_fit_G3
     sc_fit_G4, sc_fit_diag_G4 = sc_pck_fit_G4
 
-    fn_str_sbj='scores_timeGen_%sBlocks_%sFilter_PrePost_decod%s_bsline%s_%sk_%s_Subj_%s' \
-                %(args.cond_block, args.cond_filter, \
-                args.cond_decoding, args.applyBaseline_bool, \
-                args.n_splits, args.mtdt_feat, args.subj_num)
 
     sc_G1=np.asarray(sc_G1)
     sc_G2=np.asarray(sc_G2)
