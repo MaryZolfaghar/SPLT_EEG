@@ -14,8 +14,9 @@ conda activate /home/mazlfghr/.conda/envs/DeepLearningEEG
 # selected_subj=( 4 10 15 20 44 )
 # # 52 64
 
-selected_subj=( 2 3 4 36 37 42 )# 47 53 57 58 61\
-                # 62 65 67 69 70 71 72)
+selected_subj=( 2 3 4 36 37 42 )
+# 47 53 57 58 61\
+# 62 65 67 69 70 71 72)
 
 
 for i in "${selected_subj[@]}"
