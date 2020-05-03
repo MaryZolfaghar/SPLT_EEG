@@ -22,7 +22,7 @@ sbj_num=$i
 fn_str="rand_avgP2_scores_timeGen_laterBlocks_noneFilter_PrePost_decodremoveevoked_bslineFalse_3k_Trgt_Loc_prev_$sbj_num"
 full_fn=/home/mazlfghr/projects/SPLT/results/temp_gen/eCortex/$fn_str
 
-if [ ! -f $full_epch_fn ]
+if [ ! -f $full_fn ]
 then
      echo "Process starts"
      #"""""""""""""""""""""""""
