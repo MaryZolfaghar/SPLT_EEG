@@ -19,8 +19,10 @@ do
 echo $i
 sbj_num=$i
 fn_str="rand_avgP1_scores_timeGen_earlyBlocks_noneFilter_PrePost_decodremoveevoked_bslineFalse_3k_Trgt_Loc_prev_$sbj_num"
-# fn_str="rand_avgP1_scores_timeGen_laterBlocks_noneFilter_PrePost_decodremoveevoked_bslineFalse_3k_Trgt_Loc_prev_$sbj_num"
+echo $fn_str
+
 full_fn=/home/mazlfghr/projects/SPLT/results/temp_gen/eCortex/$fn_str
+echo $full_fn
 
 if [ ! -f $full_fn ]
 then
@@ -32,8 +34,7 @@ then
      # - removed evoked - #
      # - 3k - #
      # - 100 iterations - #
-     sbatch scripts/eCortex/temp_gen/rand_temp_gen_earlyPrePost_none_noBsline_rmvevoked.sh $sbj_num &
-     # sbatch scripts/eCortex/temp_gen/rand_temp_gen_laterPrePost_none_noBsline_rmvevoked.sh $sbj_num &
+     # sbatch scripts/eCortex/temp_gen/rand_temp_gen_earlyPrePost_none_noBsline_rmvevoked.sh $sbj_num &
 else
      echo "File $sbj_num already exists."
 fi
