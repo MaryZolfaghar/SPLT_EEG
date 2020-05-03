@@ -24,7 +24,7 @@ full_fn=/home/mazlfghr/projects/SPLT/results/temp_gen/eCortex/$fn_str
 
 if [ ! -f $full_fn ]
 then
-     echo "Process starts"
+     echo "Process $sbj_num starts"
      #"""""""""""""""""""""""""
      #"""""""""" Rand """""""""
      #"""""""""""""""""""""""""
