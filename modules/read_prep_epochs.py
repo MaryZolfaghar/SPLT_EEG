@@ -101,6 +101,7 @@ def read_prep_epochs(args):
         inds[iind] = subset['%s==%s' %(args.mtdt_feat, iind+1)]._data.shape[0]
 
     ind1=int(min(inds))
+    ind1=ind1-1
     ind2=subset['%s==1' %(args.mtdt_feat)]._data.shape[1]
     ind3=subset['%s==1' %(args.mtdt_feat)]._data.shape[2]
     print('minimum ind across four groups: ', ind1)
