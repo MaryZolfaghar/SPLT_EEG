@@ -15,3 +15,4 @@ echo "Process running RTs on all subjects starts"
 python RTs_anal.py \
 --SAVE_EPOCH_ROOT ../data/version5.2/preprocessed/epochs/aft_ICA_rej/ \
 --SAVE_RESULT_ROOT ../results/RTs/eCortex/ \
+--mtdt_feat Trgt_Loc_prev \

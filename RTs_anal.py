@@ -111,7 +111,7 @@ def main(args):
 
     print('Combination of all subjects RTs has a shape of:', RTs_Subjs.shape)
     # ------ Pack all scores and save them
-    fn_str = args.SAVE_RESULT_ROOT + 'RTs_all_subjs_SxGxB.npy'
+    fn_str = args.SAVE_RESULT_ROOT + 'RTs_all_subjs_SxGxB_%s.npy' %(args.mtdt_feat)
     with open(fn_str, 'wb') as f:
 	    pickle.dump(RTs_Subjs, f)
 
