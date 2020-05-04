@@ -7,6 +7,7 @@ import pickle
 import datetime
 
 from modules.read_prep_epochs import read_prep_epochs
+from utils.calc_block_RTs import calc_block_RTs
 
 def combine_subj_RTs(args, subj_ids):
 
