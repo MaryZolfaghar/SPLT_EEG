@@ -10,7 +10,7 @@ echo Running on $HOSTNAME
 source /usr/local/anaconda3/etc/profile.d/conda.sh
 conda activate /home/mazlfghr/.conda/envs/DeepLearningEEG
 
-echo "Process $1 starts"
+echo "Process running RTs on all subjects starts"
 
 python RTs_anal.py \
 --SAVE_EPOCH_ROOT ../data/version5.2/preprocessed/epochs/aft_ICA_rej/ \
