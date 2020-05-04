@@ -15,7 +15,7 @@ def combine_subj_RTs(args, subj_ids):
 
     for subj_id in range(len(subj_ids)):
         print('**************************************************************')
-        print('Subject %s starts -----------------------------------', subj_id)
+        print('Subject %s starts --------------------------------', %(subj_id))
         print(str(datetime.datetime.now()))
 
         args.cond_block = 'early'
@@ -31,7 +31,7 @@ def combine_subj_RTs(args, subj_ids):
         RTs_Subjs[subj_id, 2, :] = calc_block_RTs(Grp3e, Grp3l)
         RTs_Subjs[subj_id, 3, :] = calc_block_RTs(Grp4e, Grp4l)
         print('**************************************************************')
-        print('Subject %s Ends -------------------------------------', subj_id)
+        print('Subject %s Ends ----------------------------------', %(subj_id))
         print(str(datetime.datetime.now()))
 
     return RTs_Subjs
