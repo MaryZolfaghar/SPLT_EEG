@@ -10,7 +10,9 @@ echo Running on $HOSTNAME
 source /usr/local/anaconda3/etc/profile.d/conda.sh
 conda activate /home/mazlfghr/.conda/envs/DeepLearningEEG
 
-sbatch scripts/eCortex/RTs/RTs_anal.sh &
-sbatch scripts/eCortex/RTs/RTs_anal.sh &
+echo "Process running RTs on all subjects starts"
 
-wait
+python RTs_anal.py \
+--SAVE_EPOCH_ROOT ../data/version5.2/preprocessed/epochs/aft_ICA_rej/ \
+--SAVE_RESULT_ROOT ../results/RTs/eCortex/ \
+--mtdt_feat Trgt_Loc_main \

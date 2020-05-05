@@ -107,13 +107,22 @@ def main(args):
                   39, 43, 44, 45, 47, 48, 51, 52, 56, 57, 58, 59,\
                   60, 61, 63, 64, 66, 67, 68, 69, 71, 72, 73]
 
-    RTs_Subjs = combine_subj_RTs(args, subj_indx)
+    # RTs_Subjs = combine_subj_RTs(args, subj_indx)
+    blocks_mean_RTs, blocks_sem_RTs, block_data_RTs = combine_subj_RTs(args, subj_indx)
 
-    print('Combination of all subjects RTs has a shape of:', RTs_Subjs.shape)
+    # print('Combination of all subjects RTs has a shape of:', blocks_mean_RTs.shape)
     # ------ Pack all scores and save them
-    fn_str = args.SAVE_RESULT_ROOT + 'RTs_all_subjs_SxGxB_%s.npy' %(args.mtdt_feat)
+    fn_str = args.SAVE_RESULT_ROOT + 'mean_RTs_all_subjs_SxGxB_%s.npy' %(args.mtdt_feat)
     with open(fn_str, 'wb') as f:
-	    pickle.dump(RTs_Subjs, f)
+	    pickle.dump(blocks_mean_RTs, f)
+
+    fn_str = args.SAVE_RESULT_ROOT + 'sem_RTs_all_subjs_SxGxB_%s.npy' %(args.mtdt_feat)
+    with open(fn_str, 'wb') as f:
+        pickle.dump(blocks_sem_RTs, f)
+
+    fn_str = args.SAVE_RESULT_ROOT + 'data_RTs_all_subjs_SxGxB_%s.npy' %(args.mtdt_feat)
+    with open(fn_str, 'wb') as f:
+        pickle.dump(block_data_RTs, f)
 
     print('-------------------------------------------------------------------')
     print('Done saving')
