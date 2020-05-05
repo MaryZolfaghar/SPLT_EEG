@@ -20,3 +20,4 @@ python temp_gen.py \
 --cond_block early \
 --cond_decoding removeevoked \
 --n_splits 3 \
+--occ_channels \
