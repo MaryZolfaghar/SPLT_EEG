@@ -108,21 +108,17 @@ def main(args):
                   60, 61, 63, 64, 66, 67, 68, 69, 71, 72, 73]
 
     # RTs_Subjs = combine_subj_RTs(args, subj_indx)
-    blocks_mean_RTs, blocks_sem_RTs, block_data_RTs = combine_subj_RTs(args, subj_indx)
+    mean_RTs_Subjs, sem_RTs_Subjs = combine_subj_RTs(args, subj_indx)
 
     # print('Combination of all subjects RTs has a shape of:', blocks_mean_RTs.shape)
     # ------ Pack all scores and save them
     fn_str = args.SAVE_RESULT_ROOT + 'mean_RTs_all_subjs_SxGxB_%s.npy' %(args.mtdt_feat)
     with open(fn_str, 'wb') as f:
-	    pickle.dump(blocks_mean_RTs, f)
+	    pickle.dump(mean_RTs_Subjs, f)
 
     fn_str = args.SAVE_RESULT_ROOT + 'sem_RTs_all_subjs_SxGxB_%s.npy' %(args.mtdt_feat)
     with open(fn_str, 'wb') as f:
-        pickle.dump(blocks_sem_RTs, f)
-
-    fn_str = args.SAVE_RESULT_ROOT + 'data_RTs_all_subjs_SxGxB_%s.npy' %(args.mtdt_feat)
-    with open(fn_str, 'wb') as f:
-        pickle.dump(block_data_RTs, f)
+        pickle.dump(sem_RTs_Subjs, f)
 
     print('-------------------------------------------------------------------')
     print('Done saving')
