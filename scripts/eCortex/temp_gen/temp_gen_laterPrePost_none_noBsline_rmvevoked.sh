@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #SBATCH -p localLimited
 #SBATCH -A ecortex
-#SBATCH --mem=5G
+#SBATCH --mem=10G
 
 export HOME=`getent passwd $USER | cut -d':' -f6`
 export PYTHONUNBUFFERED=1
@@ -12,10 +12,12 @@ conda activate /home/mazlfghr/.conda/envs/DeepLearningEEG
 
 echo "Process $1 starts"
 
-python temp_gen.py \
+python temp_gen_rand.py \
 --SAVE_EPOCH_ROOT ../data/version5.2/preprocessed/epochs/aft_ICA_rej/ \
 --SAVE_RESULT_ROOT ../results/temp_gen/eCortex/ \
 --subj_num $1 \
 --cond_filter none \
 --cond_block later \
 --cond_decoding removeevoked \
+--n_splits 3 \
+--occ_channels \

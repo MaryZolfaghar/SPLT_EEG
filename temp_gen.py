@@ -72,6 +72,8 @@ parser.add_argument('--post_tmin', type=float, default=0.05,
                     help='tmin crop for poststim period')
 parser.add_argument('--post_tmax', type=float, default=0.45,
                     help='tmax crop for poststim period')
+parser.add_argument('--occ_channels', action='store_true',
+                    help='only choose channels in occipital areas')
 
 
 parser.add_argument('--num_classes', type=int, default=2,

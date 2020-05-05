@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #SBATCH -p localLimited
 #SBATCH -A ecortex
-#SBATCH --mem=10G
+#SBATCH --mem=5G
 
 export HOME=`getent passwd $USER | cut -d':' -f6`
 export PYTHONUNBUFFERED=1
@@ -19,5 +19,3 @@ python temp_gen.py \
 --cond_filter none \
 --cond_block early \
 --cond_decoding removeevoked \
---n_splits 3 \
---occ_channels \
