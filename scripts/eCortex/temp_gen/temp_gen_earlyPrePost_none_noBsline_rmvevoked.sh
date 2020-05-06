@@ -17,8 +17,8 @@ python temp_gen.py \
 --SAVE_RESULT_ROOT ../results/temp_gen/eCortex/ \
 --subj_num $1 \
 --cond_filter none \
---cond_block early \
+--cond_block b3 \
 --cond_decoding removeevoked \
 --n_splits 3 \
 --occ_channels \
---mtdt_feat Trgt_Loc_main \
+--mtdt_feat Trgt_Loc_prev \

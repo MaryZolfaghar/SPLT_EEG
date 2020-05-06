@@ -62,6 +62,19 @@ def read_prep_epochs(args):
         print('later blocks shape:\n')
         print(sl._data.shape)
         subset._data=sl._data-se._data
+    elif args.cond_block=='rand':
+        subset = subset['Block<3'].copy()
+    elif args.cond_block=='b3':
+        subset = subset['Block==3'].copy()
+    elif args.cond_block=='b10':
+        subset = subset['Block==10'].copy()
+    elif args.cond_block=='b34':
+        subset = subset['Block<5'].copy()
+        subset = subset['Block>2'].copy()
+    elif args.cond_block=='b910':
+        subset = subset['Block<11'].copy()
+        subset = subset['Block>8'].copy()
+
 
     ##==========================================================================
     subset= subset.crop(tmin=-0.45, tmax=0.45)

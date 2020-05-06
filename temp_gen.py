@@ -44,7 +44,7 @@ parser.add_argument("--SAVE_RESULT_ROOT",
 parser.add_argument('--cond_filter', choices=['none','non_symm'],
                     default='none',
                     help='What type of filter should use')
-parser.add_argument('--cond_block', choices=['early','later','diff'],
+parser.add_argument('--cond_block', choices=['early','later','rand', 'b3', 'b10', 'b34', 'b910', 'diff'],
                     default='early',
                     help='Earlier blocks vs later blocks')
 parser.add_argument('--cond_time', choices=['prestim','poststim'],
