@@ -10,7 +10,7 @@ echo Running on $HOSTNAME
 source /usr/local/anaconda3/etc/profile.d/conda.sh
 conda activate /home/mazlfghr/.conda/envs/DeepLearningEEG
 
-sbatch scripts/eCortex/RTs/RTs_anal.sh &
-sbatch scripts/eCortex/RTs/RTs_anal.sh &
+# sbatch scripts/eCortex/RTs/RTs_anal.sh &
+sbatch scripts/eCortex/RTs/RTs_anal2.sh &
 
 wait
