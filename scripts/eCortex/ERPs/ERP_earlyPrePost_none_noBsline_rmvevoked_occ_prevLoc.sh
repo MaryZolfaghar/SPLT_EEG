@@ -18,7 +18,7 @@ python ERP_anal.py \
 --SAVE_RESULT_ROOT ../results/ERPs/eCortex/ \
 --subj_num $1 \
 --cond_filter none \
---cond_block early \
+--cond_block b3 \
 --cond_decoding removeevoked \
 --mtdt_feat Trgt_Loc_prev \
 --occ_channels \
