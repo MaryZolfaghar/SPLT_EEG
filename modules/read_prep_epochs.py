@@ -19,6 +19,12 @@ def read_prep_epochs(args):
     epochs_orig = mne.read_epochs(filename_epoch, proj=True, preload=True,
                                   verbose=None)
     epochs = epochs_orig.copy()
+    ##==========================================================================
+    if epochs['Block==7'].metadata.Ptrn_Type.values.shape[0]>0:
+       main_ptrn = epochs['Block==7'].metadata.Ptrn_Type.values[0]
+    else:
+       main_ptrn = epochs['Block==8'].metadata.Ptrn_Type.values[0]
+    ##==========================================================================
     if args.cond_block=='rand':
         subset = epochs['rand']['non'].copy()
     else:
@@ -43,11 +49,6 @@ def read_prep_epochs(args):
         'E53', 'E61', 'E62', 'E78','E86'
         ]
         subset = subset.pick_types(eeg=True, selection=picks_back_brain)
-    ##==========================================================================
-    if subset['Block==7'].metadata.Ptrn_Type.values.shape[0]>0:
-       main_ptrn = subset['Block==7'].metadata.Ptrn_Type.values[0]
-    else:
-       main_ptrn = subset['Block==8'].metadata.Ptrn_Type.values[0]
     ##==========================================================================
     if args.cond_block=='early': #block 3-6
         subset = subset['Block<7'].copy()
