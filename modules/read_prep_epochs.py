@@ -19,7 +19,10 @@ def read_prep_epochs(args):
     epochs_orig = mne.read_epochs(filename_epoch, proj=True, preload=True,
                                   verbose=None)
     epochs = epochs_orig.copy()
-    subset = epochs['pred']['non'].copy()
+    if args.cond_block=='rand':
+        subset = epochs['rand']['non'].copy()
+    else:
+        subset = epochs['pred']['non'].copy()
     subset = subset.pick_types(eeg=True)
     if (args.cond_decoding=='removeevoked'):
         # REMOVE EVOKED RESP.
