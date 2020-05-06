@@ -23,8 +23,9 @@ sbj_num=$i
 
 #1. - no baseline - #
 # - removed evoked - #
+sbatch scripts/eCortex/autocorr/autocorr_randPrePost_none_noBsline_rmvevoked.sh $sbj_num &
 sbatch scripts/eCortex/autocorr/autocorr_earlyPrePost_none_noBsline_rmvevoked.sh $sbj_num &
-#####sbatch scripts/eCortex/autocorr/autocorr_laterPrePost_none_noBsline_rmvevoked.sh $sbj_num &
+sbatch scripts/eCortex/autocorr/autocorr_laterPrePost_none_noBsline_rmvevoked.sh $sbj_num &
 
 #2. - no baseline - #
 # - none - #
