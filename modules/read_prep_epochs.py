@@ -91,21 +91,27 @@ def read_prep_epochs(args):
     ##==========================================================================
     # Group data based on the previous trial
      # Group data based on the current main loc
-    Grp1 = subset['%s==1' %(args.mtdt_feat)].copy()
-    Grp2 = subset['%s==2' %(args.mtdt_feat)].copy()
-    Grp3 = subset['%s==3' %(args.mtdt_feat)].copy()
-    Grp4 = subset['%s==4' %(args.mtdt_feat)].copy()
+    if  args.cond_block=='rand':
+        Grp1 = subset.copy()
+        Grp2 = subset.copy()
+        Grp3 = subset.copy()
+        Grp4 = subset.copy()
+    else:
+        Grp1 = subset['%s==1' %(args.mtdt_feat)].copy()
+        Grp2 = subset['%s==2' %(args.mtdt_feat)].copy()
+        Grp3 = subset['%s==3' %(args.mtdt_feat)].copy()
+        Grp4 = subset['%s==4' %(args.mtdt_feat)].copy()
 
-    # Grp1 = subset['Trgt_Loc_prev==1'].copy()
-    # Grp2 = subset['Trgt_Loc_prev==2'].copy()
-    # Grp3 = subset['Trgt_Loc_prev==3'].copy()
-    # Grp4 = subset['Trgt_Loc_prev==4'].copy()
-    if main_ptrn==1:
-        Grp1 = Grp1['Trgt_Loc_main!=4'].copy()
-        Grp2 = Grp2['Trgt_Loc_main!=1'].copy()
-        Grp3 = Grp3['Trgt_Loc_main!=2'].copy()
-        Grp4 = Grp4['Trgt_Loc_main!=3'].copy()
-    ##==========================================================================
+        # Grp1 = subset['Trgt_Loc_prev==1'].copy()
+        # Grp2 = subset['Trgt_Loc_prev==2'].copy()
+        # Grp3 = subset['Trgt_Loc_prev==3'].copy()
+        # Grp4 = subset['Trgt_Loc_prev==4'].copy()
+        if main_ptrn==1:
+            Grp1 = Grp1['Trgt_Loc_main!=4'].copy()
+            Grp2 = Grp2['Trgt_Loc_main!=1'].copy()
+            Grp3 = Grp3['Trgt_Loc_main!=2'].copy()
+            Grp4 = Grp4['Trgt_Loc_main!=3'].copy()
+        ##==========================================================================
     frequencies = np.arange(3, 13, 2)
     if args.cond_decoding=='non_symm':
         Grp1 = apply_nonSymm_filter(Grp1, frequencies)
