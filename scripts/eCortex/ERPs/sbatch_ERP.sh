@@ -56,9 +56,9 @@ sbj_num=$i
 # - removed evoked - #
 # only occipital channels
 # prev trials
-sbatch scripts/eCortex/ERPs/ERP_randPrePost_none_noBsline_rmvevoked_occ_prevLoc.sh $sbj_num &
-sbatch scripts/eCortex/ERPs/ERP_earlyPrePost_none_noBsline_rmvevoked_occ_prevLoc.sh $sbj_num &
-sbatch scripts/eCortex/ERPs/ERP_laterPrePost_none_noBsline_rmvevoked_occ_prevLoc.sh $sbj_num &
+sbatch scripts/eCortex/ERPs/ERP_randPrePost_none_noBsline_rmvevoked_occ_mainLoc.sh $sbj_num &
+# sbatch scripts/eCortex/ERPs/ERP_earlyPrePost_none_noBsline_rmvevoked_occ_prevLoc.sh $sbj_num &
+# sbatch scripts/eCortex/ERPs/ERP_laterPrePost_none_noBsline_rmvevoked_occ_prevLoc.sh $sbj_num &
 
 #2. - no baseline - #
 # - none - #

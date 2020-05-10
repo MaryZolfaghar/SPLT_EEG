@@ -99,8 +99,6 @@ def main(args):
     [Grp1, Grp2, Grp3, Grp4, Grps_dt, Grps_avg, smooth_evk, main_ptrn] = \
     read_prep_epochs(args)
 
-
-
     fn_str_sbj='%sBlocks_%sFilter_PrePost_decod%s_bsline%s_%sChann_%s_Subj_%s' \
                 %(args.cond_block, args.cond_filter, \
                 args.cond_decoding, args.applyBaseline_bool, \
@@ -108,7 +106,6 @@ def main(args):
 
 
     # ------ Pack all scores and save them
-    # sc_subj_pck = [avg_sc, avg_diag_sc, avg_sc_fit, avg_diag_sc_fir]
     sc_subj_pck = [Grp1, Grp2, Grp3, Grp4, Grps_dt, Grps_avg, smooth_evk, main_ptrn]
     fn_str = args.SAVE_RESULT_ROOT + 'ERP_P%s_' %(main_ptrn) + fn_str_sbj
     with open(fn_str, 'wb') as f:

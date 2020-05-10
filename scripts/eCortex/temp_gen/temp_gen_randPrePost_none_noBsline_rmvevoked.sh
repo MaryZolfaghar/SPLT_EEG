@@ -14,7 +14,7 @@ echo "Process $1 starts"
 
 python temp_gen.py \
 --SAVE_EPOCH_ROOT ../data/version5.2/preprocessed/epochs/aft_ICA_rej/ \
---SAVE_RESULT_ROOT ../results/temp_gen/eCortex/ \
+--SAVE_RESULT_ROOT ../results/temp_gen/eCortex/rand_blocks/ \
 --subj_num $1 \
 --cond_filter none \
 --cond_block rand \
