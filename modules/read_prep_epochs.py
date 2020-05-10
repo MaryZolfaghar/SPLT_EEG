@@ -96,6 +96,9 @@ def read_prep_epochs(args):
         Grp2 = subset.copy()
         Grp3 = subset.copy()
         Grp4 = subset.copy()
+        Grps_dt=[]
+        Grps_avg=[]
+        smooth_evk = [];
     else:
         Grp1 = subset['%s==1' %(args.mtdt_feat)].copy()
         Grp2 = subset['%s==2' %(args.mtdt_feat)].copy()
@@ -112,65 +115,65 @@ def read_prep_epochs(args):
             Grp3 = Grp3['Trgt_Loc_main!=2'].copy()
             Grp4 = Grp4['Trgt_Loc_main!=3'].copy()
         ##==========================================================================
-    frequencies = np.arange(3, 13, 2)
-    if args.cond_decoding=='non_symm':
-        Grp1 = apply_nonSymm_filter(Grp1, frequencies)
-        Grp2 = apply_nonSymm_filter(Grp2, frequencies)
-        Grp3 = apply_nonSymm_filter(Grp3, frequencies)
-        Grp4 = apply_nonSymm_filter(Grp4, frequencies)
-    ##==========================================================================
-    inds = np.zeros((4,1))
-    for iind in range(4):
-        inds[iind] = subset['%s==%s' %(args.mtdt_feat, iind+1)]._data.shape[0]
+        frequencies = np.arange(3, 13, 2)
+        if args.cond_decoding=='non_symm':
+            Grp1 = apply_nonSymm_filter(Grp1, frequencies)
+            Grp2 = apply_nonSymm_filter(Grp2, frequencies)
+            Grp3 = apply_nonSymm_filter(Grp3, frequencies)
+            Grp4 = apply_nonSymm_filter(Grp4, frequencies)
+        ##==========================================================================
+        inds = np.zeros((4,1))
+        for iind in range(4):
+            inds[iind] = subset['%s==%s' %(args.mtdt_feat, iind+1)]._data.shape[0]
 
-    ind1=int(min(inds))
-    ind1=ind1-1
-    ind2=subset['%s==1' %(args.mtdt_feat)]._data.shape[1]
-    ind3=subset['%s==1' %(args.mtdt_feat)]._data.shape[2]
-    print('minimum ind across four groups: ', ind1)
-    ##==========================================================================
-    # Equalize the number of each group
-    # Grp1._data = Grp1._data[:ind1,:,:]
-    # Grp2._data = Grp2._data[:ind1,:,:]
-    # Grp3._data = Grp3._data[:ind1,:,:]
-    # Grp4._data = Grp4._data[:ind1,:,:]
-    ##==========================================================================
-    print('the pattern for this subj is :=====================================')
-    print(main_ptrn)
-    print('          ')
-    print('===================================================================')
-    ##==========================================================================
-    # Normalizing the data for each subject
-    if args.normalization_type=='normal':
-        Grp1._data = (Grp1._data - np.mean(Grp1._data)) / np.std(Grp1._data)
-        Grp2._data = (Grp2._data - np.mean(Grp2._data)) / np.std(Grp2._data)
-        Grp3._data = (Grp3._data - np.mean(Grp3._data)) / np.std(Grp3._data)
-        Grp4._data = (Grp4._data - np.mean(Grp4._data)) / np.std(Grp4._data)
-    elif args.normalization_type=='lstmPaper':
-        Grp1._data = (2 * (Grp1._data - np.min(Grp1._data))) \
-                        / (np.max(Grp1._data) - np.min(Grp1._data) - 1)
-        Grp2._data = (2 * (Grp2._data - np.min(Grp2._data))) \
-                        / (np.max(Grp2._data) - np.min(Grp2._data) - 1)
-        Grp3._data = (2 * (Grp3._data - np.min(Grp3._data))) \
-                        / (np.max(Grp3._data) - np.min(Grp3._data) - 1)
-        Grp4._data = (2 * (Grp4._data - np.min(Grp4._data))) \
-                        / (np.max(Grp4._data) - np.min(Grp4._data) - 1)
-    ##==========================================================================
-    Grps_dt = np.zeros((4, ind1, ind2, ind3))
-    Grps_dt[0,:,:,:]=Grp1._data[:ind1,:,:]
-    Grps_dt[1,:,:,:]=Grp2._data[:ind1,:,:]
-    Grps_dt[2,:,:,:]=Grp3._data[:ind1,:,:]
-    Grps_dt[3,:,:,:]=Grp4._data[:ind1,:,:]
-    Grps_avg = np.mean(Grps_dt, axis=1)
-    ##==========================================================================
-    # smoothing data
-    evk_data = np.mean(Grps_avg, axis=1)
-    smooth_evk = np.zeros((5, evk_data.shape[1]))
-    smooth_evk[0,:] = savgol_filter(evk_data[0,:], args.smooth_lvl, 3)
-    smooth_evk[1,:] = savgol_filter(evk_data[1,:], args.smooth_lvl, 3)
-    smooth_evk[2,:] = savgol_filter(evk_data[2,:], args.smooth_lvl, 3)
-    smooth_evk[3,:] = savgol_filter(evk_data[3,:], args.smooth_lvl, 3)
-    smooth_evk[4,:] = savgol_filter(np.mean(evk_data, 0), args.smooth_lvl, 3)
-    ##==========================================================================
-    # return Grp1, Grp2, Grp3, Grp4, main_ptrn
+        ind1=int(min(inds))
+        ind1=ind1-1
+        ind2=subset['%s==1' %(args.mtdt_feat)]._data.shape[1]
+        ind3=subset['%s==1' %(args.mtdt_feat)]._data.shape[2]
+        print('minimum ind across four groups: ', ind1)
+        ##==========================================================================
+        # Equalize the number of each group
+        # Grp1._data = Grp1._data[:ind1,:,:]
+        # Grp2._data = Grp2._data[:ind1,:,:]
+        # Grp3._data = Grp3._data[:ind1,:,:]
+        # Grp4._data = Grp4._data[:ind1,:,:]
+        ##==========================================================================
+        print('the pattern for this subj is :=====================================')
+        print(main_ptrn)
+        print('          ')
+        print('===================================================================')
+        ##==========================================================================
+        # Normalizing the data for each subject
+        if args.normalization_type=='normal':
+            Grp1._data = (Grp1._data - np.mean(Grp1._data)) / np.std(Grp1._data)
+            Grp2._data = (Grp2._data - np.mean(Grp2._data)) / np.std(Grp2._data)
+            Grp3._data = (Grp3._data - np.mean(Grp3._data)) / np.std(Grp3._data)
+            Grp4._data = (Grp4._data - np.mean(Grp4._data)) / np.std(Grp4._data)
+        elif args.normalization_type=='lstmPaper':
+            Grp1._data = (2 * (Grp1._data - np.min(Grp1._data))) \
+                            / (np.max(Grp1._data) - np.min(Grp1._data) - 1)
+            Grp2._data = (2 * (Grp2._data - np.min(Grp2._data))) \
+                            / (np.max(Grp2._data) - np.min(Grp2._data) - 1)
+            Grp3._data = (2 * (Grp3._data - np.min(Grp3._data))) \
+                            / (np.max(Grp3._data) - np.min(Grp3._data) - 1)
+            Grp4._data = (2 * (Grp4._data - np.min(Grp4._data))) \
+                            / (np.max(Grp4._data) - np.min(Grp4._data) - 1)
+        ##==========================================================================
+        Grps_dt = np.zeros((4, ind1, ind2, ind3))
+        Grps_dt[0,:,:,:]=Grp1._data[:ind1,:,:]
+        Grps_dt[1,:,:,:]=Grp2._data[:ind1,:,:]
+        Grps_dt[2,:,:,:]=Grp3._data[:ind1,:,:]
+        Grps_dt[3,:,:,:]=Grp4._data[:ind1,:,:]
+        Grps_avg = np.mean(Grps_dt, axis=1)
+        ##==========================================================================
+        # smoothing data
+        evk_data = np.mean(Grps_avg, axis=1)
+        smooth_evk = np.zeros((5, evk_data.shape[1]))
+        smooth_evk[0,:] = savgol_filter(evk_data[0,:], args.smooth_lvl, 3)
+        smooth_evk[1,:] = savgol_filter(evk_data[1,:], args.smooth_lvl, 3)
+        smooth_evk[2,:] = savgol_filter(evk_data[2,:], args.smooth_lvl, 3)
+        smooth_evk[3,:] = savgol_filter(evk_data[3,:], args.smooth_lvl, 3)
+        smooth_evk[4,:] = savgol_filter(np.mean(evk_data, 0), args.smooth_lvl, 3)
+        ##==========================================================================
+
     return Grp1, Grp2, Grp3, Grp4, Grps_dt, Grps_avg, smooth_evk, main_ptrn
