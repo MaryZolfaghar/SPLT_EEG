@@ -21,4 +21,4 @@ python temp_gen.py \
 --cond_decoding removeevoked \
 --n_splits 3 \
 --occ_channels \
---mtdt_feat Trgt_Loc_prev \
+--mtdt_feat Trgt_Loc_main \
