@@ -22,9 +22,13 @@ def apply_temp_gen(args, Grp_data, cv):
                                                 max_iter=args.max_iter)))
     X=Grp_data.copy()._data
     y=le.fit_transform(Grp_data.copy().metadata.Trgt_Loc_main)
-
-    time_gen = GeneralizingEstimator(clf_SVC, scoring=args.scoring,
-                                     n_jobs=args.n_jobs, verbose=True)
+    
+    if args.cond_block=='rand':
+        time_gen = GeneralizingEstimator(clf_SVC,
+                                        n_jobs=args.n_jobs, verbose=True)
+    else:
+        time_gen = GeneralizingEstimator(clf_SVC, scoring=args.scoring,
+                                        n_jobs=args.n_jobs, verbose=True)
     #print('In ApplyTempGen the size of y and X data is\n')
     #print(np.unique(y))
     #print(np.unique(Grp_data.copy().metadata.Trgt_Loc_main))
